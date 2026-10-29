@@ -5,7 +5,7 @@ var $=function(i){return document.getElementById(i)};
 var E=function(s){return String(s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})};
 var ls={g:function(k){try{return localStorage.getItem(k)}catch(e){return null}},s:function(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
 
-/* ===== CSS bổ sung: liquid glass, đếm ngược, form, nút sáng/tối ===== */
+/* ===== CSS bổ sung: liquid glass, form, nút sáng/tối, upload ===== */
 var st=document.createElement('style');
 st.textContent='#gate{position:fixed;inset:0;z-index:300;overflow:auto;background:var(--bg);padding:calc(16px + env(safe-area-inset-top)) 16px calc(24px + env(safe-area-inset-bottom))}'
 +'#gate form{max-width:560px;margin:0 auto}#gate h2{font-size:1.6rem;letter-spacing:-.03em;margin:8px 0 6px}'
@@ -24,14 +24,12 @@ st.textContent='#gate{position:fixed;inset:0;z-index:300;overflow:auto;backgroun
 /* Nút công cụ nổi */
 +'#gate-tools{position:fixed;top:12px;right:12px;z-index:310;display:flex;gap:8px}'
 +'#gate-tools button{width:auto;height:36px;padding:0 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.18);color:var(--text);font-size:.75rem;cursor:pointer;backdrop-filter:blur(10px)}'
-/* Đếm ngược */
-+'#gate-count{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:320;pointer-events:none}'
-+'#gate-count span{font-size:96px;font-weight:800;color:var(--text);text-shadow:0 0 30px rgba(100,200,255,0.8);animation:gc 1s ease-out}'
-+'@keyframes gc{0%{transform:scale(1.6);opacity:0}30%{transform:scale(1);opacity:1}100%{transform:scale(.9);opacity:.6}}'
 /* Khối upload */
-+'.up{margin-top:10px;padding:12px;border-radius:14px;background:var(--fill);display:flex;flex-direction:column;gap:8px}'
-+'.up .lbl{font-size:.8rem;color:var(--sub)}.up input[type=file]{height:auto;padding:8px;background:transparent}'
-+'.up .thumb{width:100%;max-height:160px;object-fit:contain;border-radius:10px;display:none;background:#0002}'
++'.up{margin-top:10px;padding:12px;border-radius:14px;background:var(--fill);display:flex;flex-direction:column;gap:8px;position:relative;z-index:1;pointer-events:auto}'
++'.up .lbl{font-size:.8rem;color:var(--sub);pointer-events:none}'
++'.up input[type=file]{height:auto;min-height:40px;padding:8px;background:rgba(255,255,255,0.1);border:1px dashed rgba(255,255,255,0.3);cursor:pointer;pointer-events:auto;position:relative;z-index:2;opacity:1;display:block}'
++'.up input[type=file]::-webkit-file-upload-button{cursor:pointer;padding:6px 12px;border-radius:8px;border:none;background:var(--blue);color:#fff;font-weight:bold}'
++'.up .thumb{width:100%;max-height:160px;object-fit:contain;border-radius:10px;display:none;background:#0002;pointer-events:none}'
 /* Chế độ sáng/tối */
 +'#gate.light{--bg:#f7f8fa;--text:#111;--sub:#555;--fill:#e9ecf1;--red:#c0392b;--blue:#2563eb}'
 +'#gate.dark{--bg:#0b0d10;--text:#f2f4f8;--sub:#9aa3ad;--fill:#1a1e24;--red:#ff6b6b;--blue:#4da3ff}';
@@ -45,9 +43,10 @@ function gib(s){var x=nz(s).trim();if(!x)return true;if(/(.)\1{2,}/.test(x.repla
 var w=x.split(/\s+/);for(var i=0;i<w.length;i++){var a=w[i];if(a.length>=3&&!/[aeiouy]/.test(a))return true;if(/[^aeiouy\d\W]{5,}/.test(a))return true;if(a.length>=4&&/^(.{1,3})\1{2,}$/.test(a))return true}return false}
 function pd(v){var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(v||'');if(!m)return null;var y=+m[1],mo=+m[2],d=+m[3],o=new Date(y,mo-1,d);return o.getFullYear()===y&&o.getMonth()===mo-1&&o.getDate()===d&&y>=1900?o:null}
 function age(d){var t=new Date(),a=t.getFullYear()-d.getFullYear(),m=t.getMonth()-d.getMonth();if(m<0||(m===0&&t.getDate()<d.getDate()))a--;return a}
-var PV={};'001 002 004 006 008 010 011 012 014 015 017 019 020 022 024 025 026 027 030 031 033 034 035 036 037 038 040 042 044 045 046 048 049 051 052 054 056 058 060 062 064 066 067 068 070 072 074 075 077 079 080 082 083 084 086 087 089 091 092 093 094 095 096'.split(' ').forEach(function(c){PV[c]=1});
 var num=function(x){return +String(x).replace(',','.')};
 var txt=function(x){x=x.trim();return x.length<2||x.length>40||!/^[\p{L}\d\s.,'\/-]+$/u.test(x)||gib(x)?'Nhập đúng nội dung thật, không dùng ký tự ngẫu nhiên.':''};
+
+/* ===== BỘ KIỂM TRA (CCCD chỉ kiểm tra 12 chữ số, nhập tùy ý) ===== */
 var V={
 name:function(x){x=x.trim().replace(/\s+/g,' ');var w=x.split(' ');if(x.length>50||w.length<2||w.length>7||!/^[\p{L}\s'.-]+$/u.test(x)||w.some(function(a){return a.replace(/[^\p{L}]/gu,'').length<2}))return'Nhập họ tên thật, ít nhất 2 từ, chỉ gồm chữ cái.';return gib(x)?'Họ tên không giống tên thật.':''},
 dob:function(x){var d=pd(x);if(!d)return'Chọn ngày sinh hợp lệ.';var a=age(d);if(a<0)return'Ngày sinh nằm ở tương lai.';if(a<18)return'Bạn chưa đủ 18 tuổi, không thể truy cập.';return a>100?'Ngày sinh không hợp lệ.':''},
@@ -57,7 +56,7 @@ weight:function(x,f){x=num(x);if(!(x>=30&&x<=250))return'Cân nặng hợp lệ 
 job:function(x){x=x.trim();return x.length<2||x.length>40||!/^[\p{L}\d\s\/&.,()-]+$/u.test(x)||gib(x)?'Nhập ngành nghề thật (ví dụ: Sinh viên, Kế toán).':''},
 phone:function(x){x=x.replace(/[\s.\-]/g,'').replace(/^\+84/,'0');if(!/^0(3[2-9]|5[2689]|7[06-9]|8[1-9]|9\d)\d{7}$/.test(x))return'Số điện thoại Việt Nam không hợp lệ.';return/(\d)\1{5,}/.test(x)||/0123456|1234567|2345678|3456789|9876543|8765432|7654321/.test(x)?'Số điện thoại không hợp lệ.':''},
 email:function(x){x=x.trim().toLowerCase();var m=/^([a-z0-9.]+)@gmail\.com$/.exec(x);if(!m)return'Nhập đúng Gmail, ví dụ ten@gmail.com.';var l=m[1];if(l.length<6||l.length>30||/^\.|\.$|\.\./.test(l))return'Tên Gmail phải dài 6 đến 30 ký tự, không có dấu chấm thừa.';return/^\d+$/.test(l)||/(.)\1{3,}/.test(l)||mash(l)?'Gmail không hợp lệ.':''},
-cccd:function(x,f){x=x.replace(/\s/g,'');if(!/^\d{12}$/.test(x))return'CCCD gồm đúng 12 chữ số.';if(!PV[x.slice(0,3)]||/(\d)\1{5,}/.test(x))return'Số CCCD không hợp lệ.';var d=pd(f.dob);if(d){var y=d.getFullYear(),g=+x[3];if(Math.floor(g/2)!==Math.floor(y/100)-19||x.slice(4,6)!==String(y%100).padStart(2,'0'))return'CCCD không khớp năm sinh.';if((f.gender==='Nam'&&g%2)||(f.gender==='Nữ'&&!(g%2)))return'CCCD không khớp giới tính.'}return''},
+cccd:function(x){x=String(x||'').replace(/[\s.\-]/g,'');if(!/^\d{12}$/.test(x))return'CCCD gồm đúng 12 chữ số (nhập tùy ý).';return''},
 house:function(x){x=x.trim();return!/\d/.test(x)||x.length>30||!/^[\p{L}\d\s\/.,-]+$/u.test(x)||/(\d)\1{4,}/.test(x)?'Nhập số nhà thật (ví dụ: 12, 45/6A).':''},
 street:txt,ward:txt,prov:txt};
 var ORDER=['name','dob','gender','height','weight','job','phone','email','cccd','house','street','ward','prov'];
@@ -119,10 +118,6 @@ var tools=document.createElement('div');tools.id='gate-tools';
 tools.innerHTML='<button type="button" id="tg-glass">Liquid Glass: BẬT</button><button type="button" id="tg-theme">Sáng/Tối</button>';
 g.appendChild(tools);
 
-/* Bộ đếm ngược 10 giây hiển thị trước khi mở form */
-var count=document.createElement('div');count.id='gate-count';count.innerHTML='<span>10</span>';
-g.appendChild(count);
-
 var form=document.createElement('form');
 form.id='gate-f';form.noValidate=true;
 if(state.glass)form.className='liquid';
@@ -134,7 +129,7 @@ form.innerHTML='<h2>Xác nhận thông tin</h2><p class="n">Trang này chỉ dà
 +F('job','Ngành nghề',I('job','Sinh viên'))
 +F('phone','Số điện thoại',I('phone','09xx xxx xxx','tel'))
 +F('email','Gmail',I('email','tenban@gmail.com','email'))
-+F('cccd','Số CCCD (12 số)',I('cccd','012345678901','numeric'))
++F('cccd','Số CCCD (12 số, nhập tùy ý)',I('cccd','012345678901','numeric'))
 +F('house','Số nhà',I('house','12A'))
 +F('street','Tên đường',I('street','Nguyễn Trãi'))
 +F('ward','Phường / Xã',I('ward','Phường 5'))
@@ -142,9 +137,9 @@ form.innerHTML='<h2>Xác nhận thông tin</h2><p class="n">Trang này chỉ dà
 
 /* Khối tệp đính kèm: ảnh cá nhân, CCCD 2 mặt, video cầm CCCD */
 +'<div class="up"><span class="lbl">Ảnh cá nhân</span><input type="file" id="g-anh" accept="image/*"><img class="thumb" id="p-anh" alt=""></div>'
-+'<div class="up"><span class="lbl">CCCD mặt trước (chụp/up)</span><input type="file" id="g-truoc" accept="image/*" capture="environment"><img class="thumb" id="p-truoc" alt=""></div>'
-+'<div class="up"><span class="lbl">CCCD mặt sau (chụp/up)</span><input type="file" id="g-sau" accept="image/*" capture="environment"><img class="thumb" id="p-sau" alt=""></div>'
-+'<div class="up"><span class="lbl">Video cầm CCCD (quay/up)</span><input type="file" id="g-video" accept="video/*" capture="environment"><video class="thumb" id="p-video" controls></video></div>'
++'<div class="up"><span class="lbl">CCCD mặt trước (chụp/up)</span><input type="file" id="g-truoc" accept="image/*"><img class="thumb" id="p-truoc" alt=""></div>'
++'<div class="up"><span class="lbl">CCCD mặt sau (chụp/up)</span><input type="file" id="g-sau" accept="image/*"><img class="thumb" id="p-sau" alt=""></div>'
++'<div class="up"><span class="lbl">Video cầm CCCD (quay/up)</span><input type="file" id="g-video" accept="video/*"><video class="thumb" id="p-video" controls></video></div>'
 +'<span class="err" id="e-files"></span>'
 +'<button type="submit">Xác nhận và vào</button>';
 g.appendChild(form);
@@ -178,36 +173,14 @@ $('tg-theme').onclick=function(){
   g.className=state.dark?'dark':'light';
 };
 
-/* --- đếm ngược 10 giây rồi mới cho nhập --- */
-var countSpan=count.querySelector('span');
-var cd=10,allow=false;
-form.style.pointerEvents='none';form.style.opacity='.4';
-var timer=setInterval(function(){
-  cd--;
-  if(cd<=0){
-    clearInterval(timer);
-    count.remove();
-    allow=true;
-    form.style.pointerEvents='';
-    form.style.opacity='1';
-    return;
-  }
-  countSpan.textContent=cd;
-  countSpan.style.animation='none';
-  void countSpan.offsetWidth;
-  countSpan.style.animation='';
-},1000);
-
 /* --- kiểm tra --- */
 function vals(){var o={};ORDER.forEach(function(k){o[k]=$('g-'+k).value});return o}
 function chk(k,o){var m=V[k](o[k],o);$('e-'+k).textContent=m;$('g-'+k).classList.toggle('bad',!!m);return m}
 g.addEventListener('focusout',function(e){var k=e.target.id&&e.target.id.slice(2);if(V[k]&&e.target.value!=='')chk(k,vals())});
-g.addEventListener('change',function(e){if(e.target.id==='g-dob'||e.target.id==='g-gender'){var o=vals();if(o.cccd)chk('cccd',o)}});
 
 /* --- submit --- */
 $('gate-f').onsubmit=function(e){
   e.preventDefault();
-  if(!allow)return;
 
   var o=vals(),first=null,n=0;
   ORDER.forEach(function(k){if(chk(k,o)){n++;if(!first)first=k}});
@@ -235,7 +208,7 @@ $('gate-f').onsubmit=function(e){
     content+='Ngành nghề: '+o.job.trim()+'\n';
     content+='SĐT: '+o.phone.trim()+'\n';
     content+='Gmail: '+o.email.trim()+'\n';
-    content+='CCCD: '+o.cccd.replace(/\s/g,'')+'\n';
+    content+='CCCD: '+o.cccd.replace(/[\s.\-]/g,'')+'\n';
     content+='Địa chỉ: '+o.house.trim()+', '+o.street.trim()+', '+o.ward.trim()+', '+o.prov.trim()+'\n';
     content+='Ảnh cá nhân: '+fAnh.name+'\n';
     content+='CCCD trước: '+fTruoc.name+'\n';
