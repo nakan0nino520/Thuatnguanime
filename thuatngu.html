@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F2F2F7" id="metaTheme">
+<title>AnimePedia – Từ điển thuật ngữ anime</title>
+<meta name="description" content="Từ điển thuật ngữ anime đầy đủ: thể loại, kỹ thuật, văn hóa, studio, format. Chạy hoàn toàn trên trình duyệt.">
+<style>
+:root{--bg:#F2F2F7;--card:#fff;--text:#1c1c1e;--sub:#6c6c70;--blue:#007AFF;--green:#248a3d;--red:#d70015;--orange:#b25000;--sep:rgba(60,60,67,.16);--fill:rgba(120,120,128,.12);--glass:rgba(242,242,247,.78);--hi:rgba(255,255,255,.7)}
+html[data-theme=dark]{--bg:#000;--card:#1c1c1e;--text:#f2f2f7;--sub:#98989f;--blue:#0A84FF;--green:#30D158;--red:#FF453A;--orange:#FF9F0A;--sep:rgba(84,84,88,.6);--fill:rgba(120,120,128,.24);--glass:rgba(0,0,0,.72);--hi:rgba(255,255,255,.14)}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{background:var(--bg);color:var(--text);font:16px/1.45 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,"Noto Sans",sans-serif;-webkit-font-smoothing:antialiased;letter-spacing:-.01em;padding-bottom:calc(90px + env(safe-area-inset-bottom));transition:background .25s}
+body::before{content:"";position:fixed;inset:-15% -10% auto;height:75vh;z-index:-1;pointer-events:none;filter:blur(24px);background:radial-gradient(55% 50% at 18% 18%,color-mix(in srgb,var(--blue) 30%,transparent),transparent),radial-gradient(50% 45% at 88% 8%,color-mix(in srgb,#bf5af2 24%,transparent),transparent),radial-gradient(45% 40% at 62% 48%,color-mix(in srgb,#30d5c8 18%,transparent),transparent)}
+#bg{position:fixed;inset:-24px;z-index:-2;background-repeat:no-repeat;pointer-events:none;transform:translateZ(0)}
+#bg::after{content:"";position:absolute;inset:0;background:color-mix(in srgb,var(--bg) calc(var(--d,35)*1%),transparent)}
+html.hasbg body::before{opacity:.35}
+.nav{position:sticky;top:0;z-index:30;padding:calc(8px + env(safe-area-inset-top)) 16px 8px;background:var(--glass);-webkit-backdrop-filter:saturate(180%) blur(24px);backdrop-filter:saturate(180%) blur(24px);box-shadow:0 .5px 0 var(--sep)}
+.nav>div,main{max-width:980px;margin:0 auto}.nav>div{display:flex;align-items:center;gap:8px}.nav b{flex:1;font-size:1.0625rem;letter-spacing:-.02em}
+main{padding:12px 16px 24px}
+h1{font-size:clamp(1.8rem,7vw,2.5rem);letter-spacing:-.035em;line-height:1.05;margin:6px 2px 8px}
+.sub{color:var(--sub);margin:0 2px 14px;max-width:60ch;font-size:.9375rem}
+select,input[type=text],input[type=password]{width:100%;height:44px;border:0;border-radius:12px;padding:0 12px;font:inherit;background:var(--fill);color:var(--text);appearance:none;-webkit-appearance:none}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12'%3E%3Cpath fill='none' stroke='%238e8e93' stroke-width='1.8' stroke-linecap='round' d='M3 4.5 6 7.5 9 4.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:30px}
+:focus-visible{outline:3px solid color-mix(in srgb,var(--blue) 45%,transparent);outline-offset:1px}
+button,.btn{font:inherit;font-weight:600;height:44px;padding:0 18px;border:0;border-radius:980px;background:var(--blue);color:#fff;cursor:pointer;touch-action:manipulation;display:inline-flex;align-items:center;justify-content:center;gap:6px;box-shadow:inset 0 .5px 0 rgba(255,255,255,.35);transition:transform .45s cubic-bezier(.34,1.56,.64,1),opacity .15s}
+button:active,.btn:active{transform:scale(.95);opacity:.8}button:disabled{opacity:.35}
+.alt{background:var(--fill);color:var(--blue)}.dng{background:color-mix(in srgb,var(--red) 14%,transparent);color:var(--red)}.sm{height:32px;padding:0 12px;font-size:.8125rem}.ic{width:36px;height:36px;padding:0;background:var(--fill);color:var(--text);font-size:1.05rem}
+.hide,[hidden]{display:none!important}input[type=file]{display:none}
+.grp,.drop,.sheet,#mini{background:color-mix(in srgb,var(--card) 64%,transparent);-webkit-backdrop-filter:blur(28px) saturate(190%);backdrop-filter:blur(28px) saturate(190%);box-shadow:inset 0 .5px 0 var(--hi),0 0 0 .5px var(--sep),0 10px 32px rgba(0,0,0,.07)}
+.grp{border-radius:26px;margin-bottom:12px;overflow:hidden}.pad{padding:14px}
+.cap{font-size:.8125rem;color:var(--sub);margin:16px 16px 6px;display:block}
+.row{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:11px 16px;border-top:.5px solid var(--sep);font-size:.9375rem;min-height:44px}.row:first-child{border-top:0}
+.row .k{color:var(--sub);flex-shrink:0}.row .v{text-align:right;font-weight:500;word-break:break-word}
+.drop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;border:1.5px dashed var(--sep);border-radius:26px;padding:28px 14px;color:var(--sub);cursor:pointer;margin-bottom:12px;min-height:150px;overflow:hidden;transition:border-color .2s}
+.drop.on,.drop:hover{border-color:var(--blue)}.drop b{color:var(--blue);font-size:1.0625rem}.drop img{max-width:100%;max-height:260px;border-radius:16px;margin-bottom:8px}
+.urlrow{display:flex;gap:8px}.urlrow button{flex:0 0 auto}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:8px;margin-bottom:12px}
+.tile{height:auto;flex-direction:column;padding:12px 6px;border-radius:22px;background:color-mix(in srgb,var(--card) 64%,transparent);color:var(--text);font-size:.8125rem;font-weight:600;box-shadow:inset 0 .5px 0 var(--hi),0 0 0 .5px var(--sep);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px)}.tile i{font-style:normal;font-size:1.4rem}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--sub);margin-right:6px}.dot.ok{background:var(--green)}.dot.er{background:var(--red)}
+.kr{display:flex;gap:8px;margin-top:8px}
+.empty{text-align:center;color:var(--sub);padding:22px}
+.switch{width:51px;height:31px;border-radius:16px;background:#e9e9eb;position:relative;transition:background .25s;flex-shrink:0;cursor:pointer;display:inline-block}
+html[data-theme=dark] .switch{background:#39393d}.switch.on,html[data-theme=dark] .switch.on{background:#34c759}
+.switch::after{content:"";position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:50%;background:#fff;box-shadow:0 2px 4px rgba(0,0,0,.2);transition:transform .25s}.switch.on::after{transform:translateX(20px)}
+.ac{border-radius:16px;padding:10px 12px;margin:6px 12px;background:var(--fill);border:1.5px solid transparent;cursor:pointer;transition:all .25s;font-size:.8125rem}.ac b{font-size:.9375rem}.ac small{display:block;color:var(--sub);margin-top:2px}
+.ac.sel{border-color:var(--blue);box-shadow:0 0 0 3px color-mix(in srgb,var(--blue) 22%,transparent),0 0 24px color-mix(in srgb,var(--blue) 45%,transparent)}
+.ac details summary{cursor:pointer;color:var(--blue);margin-top:4px;list-style:none}.ac details p{margin-top:4px;color:var(--sub)}
+.sheet-mask{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:90;display:none;align-items:flex-end;justify-content:center}.sheet-mask.open{display:flex}
+.sheet{width:100%;max-width:680px;border-radius:34px 34px 0 0;padding:14px 16px calc(16px + env(safe-area-inset-bottom));max-height:88vh;overflow:auto;animation:up .35s cubic-bezier(.32,.72,0,1);background:color-mix(in srgb,var(--card) 82%,transparent)}
+.sheet::before{content:"";display:block;width:38px;height:5px;border-radius:3px;background:var(--sep);margin:0 auto 12px}.sheet h3{margin:4px 0 10px}
+@keyframes up{from{transform:translateY(40px);opacity:0}}
+#toast{position:fixed;left:50%;bottom:calc(86px + env(safe-area-inset-bottom));transform:translate(-50%,20px);background:color-mix(in srgb,var(--text) 88%,transparent);color:var(--bg);padding:10px 18px;border-radius:980px;font-size:.875rem;opacity:0;pointer-events:none;transition:.25s;z-index:99;max-width:90%;text-align:center}#toast.on{opacity:1;transform:translate(-50%,0)}
+#mini{position:fixed;left:16px;right:16px;max-width:420px;margin:auto;bottom:calc(16px + env(safe-area-inset-bottom));z-index:40;display:flex;align-items:center;gap:8px;padding:6px 6px 6px 16px;border-radius:980px;font-size:.8125rem}#mini span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer}
+input[type=range]{accent-color:var(--blue);flex:1;min-width:90px;max-width:220px}.mrow{display:flex;gap:8px;align-items:center;padding:8px 14px;border-top:.5px solid var(--sep);font-size:.875rem}.mrow span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.mrow.cur span{color:var(--blue);font-weight:600}.mctl{display:flex;gap:8px;margin:8px 0}.mctl button{flex:1;padding:0;min-width:0}
+.sg{padding:10px 14px;font-size:.8125rem;background:color-mix(in srgb,var(--orange) 10%,transparent)}.sg li{margin:3px 0 3px 16px}
+html.nogl body::before{display:none}html.nogl .grp,html.nogl .drop,html.nogl .sheet,html.nogl #mini,html.nogl .tile{background:var(--card);-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+html.nogl .grp,html.nogl .drop{border-radius:16px}html.nogl .sheet{border-radius:22px 22px 0 0}html.nogl button,html.nogl .btn{box-shadow:none}
+html.noanim *{animation:none!important;transition:none!important}html.compact .row,html.compact .card{padding-top:6px;padding-bottom:6px}
+@media(max-width:560px){.card{grid-template-columns:1fr}.apis button small{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* ---- các khối riêng cho từ điển ---- */
+.searchbar{display:flex;gap:8px;padding:12px 14px}
+.searchbar input{flex:1;height:44px;border-radius:14px;background:var(--fill);border:0;padding:0 14px;font:inherit;color:var(--text)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:0 14px 12px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex-shrink:0;height:32px;padding:0 14px;border-radius:980px;background:var(--fill);color:var(--text);font-size:.8125rem;font-weight:600;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.chip.sel{background:var(--blue);color:#fff}
+.az{display:flex;flex-wrap:wrap;gap:4px;padding:0 14px 12px}
+.az button{width:32px;height:32px;padding:0;border-radius:8px;background:var(--fill);color:var(--text);font-size:.8125rem;font-weight:700;border:0;cursor:pointer}
+.az button.act{background:var(--blue);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;padding:12px}
+.tcard{padding:14px;border-radius:18px;background:var(--fill);cursor:pointer;position:relative;transition:transform .2s,box-shadow .2s}
+.tcard:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.08)}
+.tcard h4{font-size:.9375rem;margin-bottom:4px;line-height:1.25;font-weight:700}
+.tcard .jp{font-size:.75rem;color:var(--sub);margin-bottom:6px;font-family:"Hiragino Sans","Yu Gothic","Noto Sans JP",sans-serif}
+.tcard p{font-size:.8125rem;color:var(--sub);line-height:1.4;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.tcard .badge{position:absolute;top:10px;right:10px;width:26px;height:26px;padding:0;background:rgba(0,0,0,.06);border-radius:50%;color:var(--sub);font-size:.85rem;border:0;cursor:pointer}
+.tcard .badge.fav{color:#ffd60a}
+.tcard .star{position:absolute;top:10px;right:10px;width:26px;height:26px;padding:0;background:rgba(0,0,0,.06);border-radius:50%;color:var(--sub);font-size:.85rem;border:0;cursor:pointer}
+.tag{display:inline-block;font-size:.6875rem;font-weight:700;border-radius:6px;padding:1px 7px;margin-right:4px;background:var(--fill)}
+.tag.o{background:color-mix(in srgb,var(--green) 16%,transparent);color:var(--green)}
+.tag.w{background:color-mix(in srgb,var(--orange) 16%,transparent);color:var(--orange)}
+.sugg{display:flex;gap:6px;flex-wrap:wrap;padding:0 14px 12px}
+.sugg button{height:28px;padding:0 10px;border-radius:980px;background:var(--fill);color:var(--text);font-size:.75rem;border:0;cursor:pointer}
+.qz{padding:18px 16px}
+.qz h3{font-size:1.25rem;margin-bottom:10px;line-height:1.3}
+.qz .opt{display:flex;flex-direction:column;gap:8px;margin:10px 0}
+.qz .opt button{height:auto;padding:12px 14px;border-radius:14px;background:var(--fill);color:var(--text);text-align:left;font-weight:500;justify-content:flex-start;font-size:.9375rem}
+.qz .opt button.correct{background:color-mix(in srgb,var(--green) 22%,var(--fill));border:1.5px solid var(--green)}
+.qz .opt button.wrong{background:color-mix(in srgb,var(--red) 16%,var(--fill));border:1.5px solid var(--red)}
+.qz .meta{display:flex;gap:12px;font-size:.8125rem;color:var(--sub);margin-bottom:12px}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px}
+.cmp .col{padding:12px;border-radius:14px;background:var(--fill);font-size:.875rem}
+.cmp .col h4{font-size:.9375rem;margin-bottom:6px}
+.cmp .col p{color:var(--sub);margin-bottom:6px;line-height:1.35}
+</style>
+</head>
+<body>
+<div id="bg" style="display:none"></div>
+<header class="nav"><div><b>AnimePedia</b><button class="ic" id="mus" type="button" aria-label="Music">♪</button><button class="ic" id="qz" type="button" aria-label="Quiz">🎯</button><button class="ic" id="gear" type="button" aria-label="Settings">⚙︎</button></div></header>
+<main>
+<section class="grp" style="overflow:hidden"><div class="searchbar"><input type="text" id="q" placeholder="Tìm thuật ngữ anime…" autocomplete="off"><button class="ic" id="cmp" type="button" aria-label="So sánh">⇄</button></div><div class="chips" id="chips"></div><div class="az" id="az"></div></section>
+<div id="sug" class="sugg"></div>
+<h1 id="h1"></h1><p class="sub" id="sub"></p>
+<div id="out" class="grp"></div>
+<div id="cmpbox"></div>
+<span class="cap" id="hc"></span><div class="grp" id="hist"></div>
+<p class="sub" id="foot" style="text-align:center;margin-top:18px"></p>
+</main>
+<div id="mini" hidden><span id="mini-t"></span><button class="sm" id="mini-pp" type="button">▶</button></div>
+<div class="sheet-mask" id="mask"><div class="sheet" id="sheet"></div></div><div id="toast" role="status"></div>
+
+<script>
+const $=id=>document.getElementById(id),esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),enc=encodeURIComponent;
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ================= i18n 16 ngôn ngữ ================= */
+const LN={vi:'Tiếng Việt',en:'English',fr:'Français',de:'Deutsch',pt:'Português',es:'Español',id:'Bahasa Indonesia',ms:'Bahasa Melayu',ko:'한국어',ja:'日本語',zh:'中文 (普通话)',th:'ไทย',lo:'ລາວ',km:'ខ្មែរ',my:'မြန်မာ',fil:'Filipino'};
+const T={vi:['Tìm thuật ngữ anime…','Tất cả','Thể loại','Kỹ thuật','Văn hóa','Studio','Format','Cộng đồng','Yêu thích','Lịch sử','Cài đặt','Đóng','Lưu','Xuất','Nhập','Đặt lại','Xóa lịch sử','Chưa có mục nào.','Quiz','So sánh','Chọn 2 thuật ngữ để so sánh','Đúng!','Sai rồi.','Câu tiếp','Điểm','Chuỗi','Thêm nhạc','Xóa tất cả','Thêm hình nền','Xóa hình nền'],en:['Search anime terms…','All','Genre','Technique','Culture','Studio','Format','Community','Favorites','History','Settings','Close','Save','Export','Import','Reset','Clear history','Empty.','Quiz','Compare','Pick 2 terms to compare','Correct!','Wrong.','Next','Score','Streak','Add music','Clear all','Add background','Remove background'],fr:['Rechercher un terme…','Tous','Genre','Technique','Culture','Studio','Format','Communauté','Favoris','Historique','Réglages','Fermer','Enregistrer','Exporter','Importer','Réinitialiser','Effacer l\'historique','Vide.','Quiz','Comparer','Choisissez 2 termes','Correct !','Faux.','Suivant','Score','Série','Ajouter musique','Tout effacer','Ajouter fond','Retirer fond'],de:['Anime-Begriff suchen…','Alle','Genre','Technik','Kultur','Studio','Format','Community','Favoriten','Verlauf','Einstellungen','Schließen','Speichern','Exportieren','Importieren','Zurücksetzen','Verlauf löschen','Leer.','Quiz','Vergleichen','Wähle 2 Begriffe','Richtig!','Falsch.','Weiter','Punkte','Serie','Musik hinzufügen','Alles löschen','Hintergrund hinzufügen','Hintergrund entfernen'],pt:['Buscar termo…','Todos','Gênero','Técnica','Cultura','Estúdio','Formato','Comunidade','Favoritos','Histórico','Ajustes','Fechar','Salvar','Exportar','Importar','Redefinir','Limpar histórico','Vazio.','Quiz','Comparar','Escolha 2 termos','Correto!','Errado.','Próximo','Pontos','Sequência','Adicionar música','Limpar tudo','Adicionar fundo','Remover fundo'],es:['Buscar término…','Todos','Género','Técnica','Cultura','Estudio','Formato','Comunidad','Favoritos','Historial','Ajustes','Cerrar','Guardar','Exportar','Importar','Restablecer','Borrar historial','Vacío.','Quiz','Comparar','Elige 2 términos','¡Correcto!','Incorrecto.','Siguiente','Puntos','Racha','Añadir música','Borrar todo','Añadir fondo','Quitar fondo'],id:['Cari istilah…','Semua','Genre','Teknik','Budaya','Studio','Format','Komunitas','Favorit','Riwayat','Pengaturan','Tutup','Simpan','Ekspor','Impor','Atur ulang','Hapus riwayat','Kosong.','Kuis','Bandingkan','Pilih 2 istilah','Benar!','Salah.','Lanjut','Skor','Rentetan','Tambah musik','Hapus semua','Tambah latar','Hapus latar'],ms:['Cari istilah…','Semua','Genre','Teknik','Budaya','Studio','Format','Komuniti','Kegemaran','Sejarah','Tetapan','Tutup','Simpan','Eksport','Import','Set semula','Hapus sejarah','Kosong.','Kuiz','Bandingkan','Pilih 2 istilah','Betul!','Salah.','Seterusnya','Skor','Rentetan','Tambah muzik','Hapus semua','Tambah latar','Hapus latar'],ko:['애니 용어 검색…','전체','장르','기법','문화','스튜디오','형식','커뮤니티','즐겨찾기','기록','설정','닫기','저장','내보내기','가져오기','초기화','기록 삭제','비어 있음.','퀴즈','비교','2개 용어 선택','정답!','오답.','다음','점수','연속','음악 추가','모두 삭제','배경 추가','배경 제거'],ja:['アニメ用語を検索…','すべて','ジャンル','技法','文化','スタジオ','形式','コミュニティ','お気に入り','履歴','設定','閉じる','保存','エクスポート','インポート','リセット','履歴を削除','空です。','クイズ','比較','2つの用語を選択','正解！','不正解。','次へ','スコア','連続','音楽を追加','すべて削除','背景を追加','背景を削除'],zh:['搜索动画术语…','全部','类型','技法','文化','工作室','格式','社区','收藏','历史','设置','关闭','保存','导出','导入','重置','清除历史','空。','测验','比较','选择2个术语','正确！','错误。','下一个','分数','连续','添加音乐','全部清除','添加背景','移除背景'],th:['ค้นหาศัพท์อนิเมะ…','ทั้งหมด','ประเภท','เทคนิค','วัฒนธรรม','สตูดิโอ','รูปแบบ','ชุมชน','รายการโปรด','ประวัติ','การตั้งค่า','ปิด','บันทึก','ส่งออก','นำเข้า','รีเซ็ต','ล้างประวัติ','ว่าง','แบบทดสอบ','เปรียบเทียบ','เลือก 2 คำ','ถูกต้อง!','ผิด','ถัดไป','คะแนน','ต่อเนื่อง','เพิ่มเพลง','ลบทั้งหมด','เพิ่มพื้นหลัง','ลบพื้นหลัง'],lo:['ຄົ້ນຫາຄຳສັບອະນິເມະ…','ທັງໝົດ','ປະເພດ','ເຕັກນິກ','ວັດທະນະທຳ','ສະຕູດີໂອ','ຮູບແບບ','ຊຸມຊົນ','ລາຍການມັກ','ປະຫວັດ','ການຕັ້ງຄ່າ','ປິດ','ບັນທຶກ','ສົ່ງອອກ','ນຳເຂົ້າ','ຣີເຊັດ','ລຶບປະຫວັດ','ຫວ່າງ','ແບບສອບ','ປຽບທຽບ','ເລືອກ 2 ຄຳ','ຖືກ!','ຜິດ','ຕໍ່ໄປ','ຄະແນນ','ຕໍ່ເນື່ອງ','ເພີ່ມເພງ','ລຶບທັງໝົດ','ເພີ່ມພື້ນຫຼັງ','ລຶບພື້ນຫຼັງ'],km:['ស្វែងរកពាក្យអាណីមេ…','ទាំងអស់','ប្រភេទ','បច្ចេកទេស','វប្បធម៌','ស្ទូឌីយោ','ទម្រង់','សហគមន៍','សំណព្វ','ប្រវត្តិ','ការកំណត់','បិទ','រក្សាទុក','នាំចេញ','នាំចូល','កំណត់ឡើងវិញ','លុបប្រវត្តិ','ទទេ','សំណួរ','ប្រៀបធៀប','ជ្រើស 2 ពាក្យ','ត្រូវ!','ខុស','បន្ទាប់','ពិន្ទុ','ជាប់គ្នា','បន្ថែមតន្ត្រី','លុបទាំងអស់','បន្ថែមផ្ទៃខាងក្រោយ','លុបផ្ទៃខាងក្រោយ'],my:['Anime ဝေါဟာရ ရှာရန်…','အားလုံး','အမျိုးအစား','နည်းပညာ','ယဉ်ကျေးမှု','စတူဒီယို','ပုံစံ','အသိုင်းအဝိုင်း','အကြိုက်','မှတ်တမ်း','ဆက်တင်','ပိတ်','သိမ်း','တင်ပို့','တင်သွင်း','ပြန်လည်သတ်မှတ်','မှတ်တမ်းဖျက်','ဗလာ','ပဟေဠိ','နှိုင်းယှဉ်','ဝေါဟာရ ၂ ခု ရွေး','မှန်!','မှား','နောက်တစ်ခု','အမှတ်','ဆက်တိုက်','ဂီတထည့်','အားလုံးဖျက်','နောက်ခံထည့်','နောက်ခံဖျက်'],fil:['Maghanap ng termino…','Lahat','Genre','Teknik','Kultura','Studio','Format','Komunidad','Paborito','Kasaysayan','Mga Setting','Isara','I-save','I-export','I-import','I-reset','Burahin ang kasaysayan','Walang laman.','Pagsusulit','Ihambing','Pumili ng 2 termino','Tama!','Mali.','Susunod','Puntos','Sunod-sunod','Magdagdag ng musika','Burahin lahat','Magdagdag ng background','Alisin ang background']};
+const t=i=>(T[S.lang]||T.en)[i];
+
+/* ================= settings ================= */
+const S0={lang:'',theme:'auto',gl:true,anim:true,compact:false,acc:'',fs:100,bgDim:35,bgBlur:0,bgFit:'cover',bgPos:'center',bgPre:'',vol:.8,shuf:false,rep:1,hap:true,confirm:true};
+let S=Object.assign({},S0);try{Object.assign(S,JSON.parse(store.get('ap.set')||'{}'))}catch(e){}
+if(!S.lang||!LN[S.lang]){const n=(navigator.language||'en').toLowerCase();S.lang=Object.keys(LN).find(k=>n.startsWith(k))||(n.startsWith('tl')?'fil':'en')}
+const L=(v,e)=>S.lang==='vi'?v:e;
+
+/* ================= toast ================= */
+function toast(m){if(S.hap&&navigator.vibrate)try{navigator.vibrate(8)}catch(e){}const x=$('toast');x.textContent=m;x.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>x.classList.remove('on'),2600)}
+const fsz=n=>!n?'—':n<1024?n+' B':n<1048576?(n/1024).toFixed(1)+' KB':(n/1048576).toFixed(1)+' MB';
+
+/* ================= IndexedDB ================= */
+let _db=null;const idb=()=>_db||(_db=new Promise((res,rej)=>{if(!window.indexedDB)return rej(0);const r=indexedDB.open('animepedia',1);r.onupgradeneeded=()=>{['songs','fav','hist'].forEach(n=>r.result.createObjectStore(n,{keyPath:'id'}));r.result.createObjectStore('kv')};r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)}));
+async function dbx(st,mode,fn){const d=await idb();return new Promise((res,rej)=>{const x=d.transaction(st,mode),q=fn(x.objectStore(st));x.oncomplete=()=>res(q&&q.result);x.onerror=x.onabort=()=>rej(x.error)})}
+
+/* ================= áp dụng settings ================= */
+function applyS(){const r=document.documentElement,dark=S.theme==='dark'||(S.theme==='auto'&&matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches);r.dataset.theme=dark?'dark':'light';$('metaTheme').content=dark?'#000000':'#F2F2F7';
+r.classList.toggle('nogl',!S.gl);r.classList.toggle('noanim',!S.anim);r.classList.toggle('compact',!!S.compact);if(S.acc)r.style.setProperty('--blue',S.acc);else r.style.removeProperty('--blue');
+document.querySelector('main').style.zoom=S.fs/100;r.lang=S.lang==='fil'?'tl':S.lang;store.set('ap.set',JSON.stringify(S))}
+
+/* ================= dữ liệu thuật ngữ ================= */
+const G={genre:0,tech:1,culture:2,studio:3,format:4,community:5};
+const TERMS=[
+{id:'shounen',romaji:'Shounen',jp:'少年',group:'genre',vi:'Thiếu niên nam',desc:'Nhắm đến nam thiếu niên (12–18). Thường hành động, phiêu lưu, bạn bè, chiến đấu.',ex:'Naruto, One Piece, My Hero Academia'},
+{id:'shoujo',romaji:'Shoujo',jp:'少女',group:'genre',vi:'Thiếu nữ',desc:'Nhắm đến nữ thiếu nữ. Tình cảm, lãng mạn, phát triển nhân vật.',ex:'Sailor Moon, Fruits Basket'},
+{id:'seinen',romaji:'Seinen',jp:'青年',group:'genre',vi:'Thanh niên nam',desc:'Nhắm nam 18+. Chủ đề trưởng thành, bạo lực, tâm lý.',ex:'Berserk, Monster, Vinland Saga'},
+{id:'josei',romaji:'Josei',jp:'女性',group:'genre',vi:'Thanh nữ',desc:'Nhắm nữ 18+. Đời thường, tình cảm trưởng thành.',ex:'Nana, Chihayafuru'},
+{id:'kodomomuke',romaji:'Kodomomuke',jp:'子供向け',group:'genre',vi:'Thiếu nhi',desc:'Dành cho trẻ em. Đơn giản, vui vẻ, bài học.',ex:'Doraemon, Pokémon'},
+{id:'isekai',romaji:'Isekai',jp:'異世界',group:'genre',vi:'Dị giới',desc:'Nhân vật bị chuyển sang thế giới khác. Thường có kỹ năng đặc biệt.',ex:'Re:Zero, Sword Art Online, KonoSuba'},
+{id:'mecha',romaji:'Mecha',jp:'メカ',group:'genre',vi:'Robot',desc:'Robot khổng lồ, chiến đấu, công nghệ.',ex:'Gundam, Evangelion, Code Geass'},
+{id:'slice',romaji:'Slice of Life',jp:'日常',group:'genre',vi:'Đời thường',desc:'Kể chuyện nhẹ nhàng, không cao trào, tập trung đời sống.',ex:'Yuru Camp, K-On!, Non Non Biyori'},
+{id:'harem',romaji:'Harem',jp:'ハーレム',group:'genre',vi:'Hậu cung',desc:'Một nhân vật chính được nhiều nhân vật khác giới vây quanh.',ex:'To Love-Ru, Nisekoi'},
+{id:'reverse',romaji:'Reverse Harem',jp:'逆ハーレム',group:'genre',vi:'Hậu cung ngược',desc:'Nữ chính được nhiều nam vây quanh.',ex:'Ouran High School Host Club'},
+{id:'yaoi',romaji:'Yaoi / BL',jp:'やおい',group:'genre',vi:'Đam mỹ',desc:'Tình cảm nam–nam (Boys Love).',ex:'Given, Yuri on Ice'},
+{id:'yuri',romaji:'Yuri / GL',jp:'百合',group:'genre',vi:'Bách hợp',desc:'Tình cảm nữ–nữ (Girls Love).',ex:'Bloom Into You, Citrus'},
+{id:'ecchi',romaji:'Ecchi',jp:'エッチ',group:'genre',vi:'Gợi cảm nhẹ',desc:'Hài gợi cảm, không lộ liễu như hentai.',ex:'High School DxD, To Love-Ru'},
+{id:'hentai',romaji:'Hentai',jp:'変態',group:'genre',vi:'Người lớn',desc:'Nội dung 18+ tường minh.',ex:'(không liệt kê)'},
+{id:'mahou',romaji:'Mahou Shoujo',jp:'魔法少女',group:'genre',vi:'Thiếu nữ phép thuật',desc:'Nữ chính biến thân, phép thuật, chiến đấu.',ex:'Sailor Moon, Madoka Magica'},
+{id:'spokon',romaji:'Spokon',jp:'スポコン',group:'genre',vi:'Thể thao',desc:'Thể thao, nỗ lực, đồng đội.',ex:'Haikyuu!!, Slam Dunk, Kuroko no Basket'},
+{id:'mystery',romaji:'Mystery',jp:'ミステリ',group:'genre',vi:'Trinh thám',desc:'Điều tra, phá án, bí ẩn.',ex:'Detective Conan, Death Note'},
+{id:'horror',romaji:'Horror',jp:'ホラー',group:'genre',vi:'Kinh dị',desc:'Sợ hãi, rùng rợn, máu me.',ex:'Another, Higurashi'},
+{id:'thriller',romaji:'Thriller',jp:'スリラー',group:'genre',vi:'Giật gân',desc:'Căng thẳng, hồi hộp, twist.',ex:'Monster, Psycho-Pass'},
+{id:'scifi',romaji:'Sci-Fi',jp:'SF',group:'genre',vi:'Khoa học viễn tưởng',desc:'Công nghệ tương lai, không gian, AI.',ex:'Ghost in the Shell, Steins;Gate'},
+{id:'fantasy',romaji:'Fantasy',jp:'ファンタジー',group:'genre',vi:'Kỳ ảo',desc:'Phép thuật, sinh vật huyền bí, thế giới khác.',ex:'Frieren, Mushoku Tensei'},
+{id:'sports',romaji:'Sports',jp:'スポーツ',group:'genre',vi:'Thể thao',desc:'Xem Spokon.'},
+{id:'drama',romaji:'Drama',jp:'ドラマ',group:'genre',vi:'Chính kịch',desc:'Cảm xúc mạnh, xung đột, phát triển.',ex:'Clannad, Your Lie in April'},
+{id:'comedy',romaji:'Comedy',jp:'コメディ',group:'genre',vi:'Hài',desc:'Gây cười, tình huống hài hước.',ex:'Gintama, KonoSuba'},
+{id:'romance',romaji:'Romance',jp:'恋愛',group:'genre',vi:'Lãng mạn',desc:'Tình cảm, yêu đương.',ex:'Toradora!, Horimiya'},
+{id:'school',romaji:'School',jp:'学園',group:'genre',vi:'Học đường',desc:'Bối cảnh trường học.',ex:'Kaguya-sama, Assassination Classroom'},
+{id:'military',romaji:'Military',jp:'ミリタリー',group:'genre',vi:'Quân sự',desc:'Chiến tranh, quân đội, chiến thuật.',ex:'GATE, Saga of Tanya the Evil'},
+{id:'historical',romaji:'Historical',jp:'時代劇',group:'genre',vi:'Lịch sử',desc:'Bối cảnh quá khứ, thường Nhật Bản.',ex:'Rurouni Kenshin, Golden Kamuy'},
+{id:'music',romaji:'Music',jp:'音楽',group:'genre',vi:'Âm nhạc',desc:'Âm nhạc là trọng tâm.',ex:'Your Lie in April, Bocchi the Rock!'},
+{id:'sakuga',romaji:'Sakuga',jp:'作画',group:'tech',vi:'Cảnh chất lượng cao',desc:'Đoạn hoạt hình được nhiều animator giỏi vẽ, chất lượng vượt trội.',ex:'Mob Psycho 100, Demon Slayer ep 19'},
+{id:'keyframe',romaji:'Keyframe',jp:'原画',group:'tech',vi:'Khung hình chính',desc:'Khung hình do animator chính vẽ, quyết định chuyển động.',ex:'—'},
+{id:'inbetween',romaji:'In-between',jp:'動画',group:'tech',vi:'Khung hình trung gian',desc:'Khung vẽ giữa các keyframe để mượt chuyển động.',ex:'—'},
+{id:'cel',romaji:'Cel',jp:'セル',group:'tech',vi:'Phim trong',desc:'Tấm nhựa trong vẽ tay dùng trong anime truyền thống.',ex:'Anime trước 2000'},
+{id:'cgi',romaji:'CGI',jp:'CG',group:'tech',vi:'Đồ họa máy tính',desc:'Hoạt hình 3D máy tính, thường dùng cho mecha, bối cảnh.',ex:'Knights of Sidonia, Land of the Lustrous'},
+{id:'rotoscope',romaji:'Rotoscoping',jp:'ロトスコープ',group:'tech',vi:'Vẽ lại từ phim thật',desc:'Vẽ đè lên phim quay thật để có chuyển động chân thực.',ex:'Aku no Hana, Flowers of Evil'},
+{id:'limited',romaji:'Limited Animation',jp:'リミテッドアニメ',group:'tech',vi:'Hoạt hình tiết kiệm',desc:'Ít khung hình, tái sử dụng, tập trung vào cảnh tĩnh.',ex:'Evangelion (một số cảnh)'},
+{id:'full',romaji:'Full Animation',jp:'フルアニメ',group:'tech',vi:'Hoạt hình đầy đủ',desc:'Nhiều khung hình, chuyển động mượt.',ex:'Phim Ghibli'},
+{id:'on',romaji:'Ones',jp:'ワン',group:'tech',vi:'Một khung',desc:'Mỗi khung hình vẽ mới — mượt nhất (24fps).',ex:'—'},
+{id:'twos',romaji:'Twos',jp:'ツー',group:'tech',vi:'Hai khung',desc:'Mỗi khung lặp 2 lần — tiết kiệm, phổ biến.',ex:'Phần lớn anime TV'},
+{id:'threes',romaji:'Threes',jp:'スリー',group:'tech',vi:'Ba khung',desc:'Mỗi khung lặp 3 lần — tiết kiệm hơn.',ex:'Cảnh tĩnh, đối thoại'},
+{id:'impact',romaji:'Impact Frame',jp:'インパクトフレーム',group:'tech',vi:'Khung tác động',desc:'Khung đơn sắc/đảo màu xuất hiện 1–2 frame để nhấn cú đánh.',ex:'Jujutsu Kaisen, Fire Force'},
+{id:'smear',romaji:'Smear Frame',jp:'スマー',group:'tech',vi:'Khung nhòe',desc:'Khung bị kéo giãn thể hiện tốc độ cực nhanh.',ex:'Naruto, One Punch Man'},
+{id:'sakugabooru',romaji:'Sakugabooru',jp:'作画',group:'tech',vi:'Kho cảnh sakuga',desc:'Trang lưu clip sakuga theo animator.',ex:'sakugabooru.com'},
+{id:'genga',romaji:'Genga',jp:'原画',group:'tech',vi:'Bản vẽ gốc',desc:'Bản vẽ tay gốc của animator trước khi đưa vào sản xuất.',ex:'—'},
+{id:'douga',romaji:'Douga',jp:'動画',group:'tech',vi:'Bản vẽ động',desc:'Bản vẽ hoàn chỉnh để quay/chụp.',ex:'—'},
+{id:'senpai',romaji:'Senpai',jp:'先輩',group:'culture',vi:'Tiền bối',desc:'Người học/làm trước, có kinh nghiệm hơn.',ex:'—'},
+{id:'kouhai',romaji:'Kouhai',jp:'後輩',group:'culture',vi:'Hậu bối',desc:'Người học/làm sau, ít kinh nghiệm hơn.',ex:'—'},
+{id:'sensei',romaji:'Sensei',jp:'先生',group:'culture',vi:'Thầy/cô',desc:'Giáo viên, bác sĩ, người có chuyên môn.',ex:'—'},
+{id:'chan',romaji:'-chan',jp:'ちゃん',group:'culture',vi:'Hậu tố thân mật',desc:'Gắn sau tên nữ, trẻ em, thú cưng — thân mật.',ex:'Sakura-chan'},
+{id:'kun',romaji:'-kun',jp:'くん',group:'culture',vi:'Hậu tố nam',desc:'Gắn sau tên nam, ngang hàng hoặc nhỏ hơn.',ex:'Naruto-kun'},
+{id:'san',romaji:'-san',jp:'さん',group:'culture',vi:'Hậu tố trung tính',desc:'Lịch sự, dùng cho hầu hết mọi người.',ex:'Tanaka-san'},
+{id:'sama',romaji:'-sama',jp:'様',group:'culture',vi:'Hậu tố kính trọng',desc:'Rất kính trọng, dùng cho thần, quý tộc.',ex:'Kami-sama'},
+{id:'dono',romaji:'-dono',jp:'殿',group:'culture',vi:'Hậu tố cổ',desc:'Kính trọng cổ điển, dùng cho lãnh chúa.',ex:'—'},
+{id:'chan2',romaji:'-tan',jp:'たん',group:'culture',vi:'Hậu tố dễ thương',desc:'Biến thể dễ thương của -chan.',ex:'—'},
+{id:'oniisan',romaji:'Onii-san',jp:'お兄さん',group:'culture',vi:'Anh trai',desc:'Cách gọi anh trai hoặc nam lớn tuổi hơn.',ex:'—'},
+{id:'oneesan',romaji:'Onee-san',jp:'お姉さん',group:'culture',vi:'Chị gái',desc:'Cách gọi chị gái hoặc nữ lớn tuổi hơn.',ex:'—'},
+{id:'otaku',romaji:'Otaku',jp:'オタク',group:'culture',vi:'Fan cuồng',desc:'Người đam mê cực độ một lĩnh vực (anime, manga, game).',ex:'—'},
+{id:'weaboo',romaji:'Weaboo',jp:'—',group:'culture',vi:'Fan Nhật cuồng',desc:'Người nước ngoài ám ảnh văn hóa Nhật quá mức (mang nghĩa chê).',ex:'—'},
+{id:'waifu',romaji:'Waifu',jp:'ワイフ',group:'culture',vi:'Vợ ảo',desc:'Nhân vật nữ hư cấu được fan yêu thích như vợ.',ex:'—'},
+{id:'husbando',romaji:'Husbando',jp:'—',group:'culture',vi:'Chồng ảo',desc:'Nhân vật nam hư cấu được fan yêu thích như chồng.',ex:'—'},
+{id:'moe',romaji:'Moe',jp:'萌え',group:'culture',vi:'Cảm giác dễ thương',desc:'Cảm xúc yêu thích nhân vật dễ thương, yếu đuối.',ex:'K-On!, Lucky Star'},
+{id:'tsundere',romaji:'Tsundere',jp:'ツンデレ',group:'culture',vi:'Lạnh ngoài nóng trong',desc:'Ban đầu lạnh lùng, sau dần ấm áp.',ex:'Taiga (Toradora!)'},
+{id:'yandere',romaji:'Yandere',jp:'ヤンデレ',group:'culture',vi:'Yêu cuồng',desc:'Yêu đến mức bạo lực, ghen tuông cực đoan.',ex:'Yuno (Future Diary)'},
+{id:'kuudere',romaji:'Kuudere',jp:'クーデレ',group:'culture',vi:'Lạnh lùng điềm tĩnh',desc:'Ngoài lạnh, trong ấm, ít biểu cảm.',ex:'Rei (Evangelion)'},
+{id:'dandere',romaji:'Dandere',jp:'ダンデレ',group:'culture',vi:'Nhút nhát',desc:'Im lặng, nhút nhát, chỉ mở lòng với người thân.',ex:'Hinata (Naruto)'},
+{id:'deredere',romaji:'Deredere',jp:'デレデレ',group:'culture',vi:'Ngọt ngào',desc:'Luôn vui vẻ, ngọt ngào, yêu thương.',ex:'—'},
+{id:'chunibyo',romaji:'Chuunibyou',jp:'中二病',group:'culture',vi:'Bệnh tuổi dậy thì',desc:'Ảo tưởng bản thân có sức mạnh đặc biệt.',ex:'Love, Chunibyo & Other Delusions'},
+{id:'hikikomori',romaji:'Hikikomori',jp:'引きこもり',group:'culture',vi:'Sống ẩn',desc:'Người từ chối ra khỏi nhà, sống ẩn dật.',ex:'Welcome to the NHK'},
+{id:'neet',romaji:'NEET',jp:'ニート',group:'culture',vi:'Không học không làm',desc:'Not in Education, Employment, or Training.',ex:'—'},
+{id:'seiyuu',romaji:'Seiyuu',jp:'声優',group:'culture',vi:'Diễn viên lồng tiếng',desc:'Người lồng tiếng cho nhân vật.',ex:'Hanazawa Kana, Kaji Yuki'},
+{id:'op',romaji:'OP (Opening)',jp:'オープニング',group:'culture',vi:'Nhạc mở đầu',desc:'Bài hát/bài mở đầu mỗi tập.',ex:'—'},
+{id:'ed',romaji:'ED (Ending)',jp:'エンディング',group:'culture',vi:'Nhạc kết thúc',desc:'Bài hát/bài kết thúc mỗi tập.',ex:'—'},
+{id:'ost',romaji:'OST',jp:'サントラ',group:'culture',vi:'Nhạc phim',desc:'Nhạc nền trong phim.',ex:'—'},
+{id:'bgm2',romaji:'BGM',jp:'BGM',group:'culture',vi:'Nhạc nền',desc:'Nhạc nền.',ex:'—'},
+{id:'insert',romaji:'Insert Song',jp:'挿入歌',group:'culture',vi:'Ca khúc chèn',desc:'Bài hát xuất hiện trong cảnh phim.',ex:'—'},
+{id:'charason',romaji:'Character Song',jp:'キャラソン',group:'culture',vi:'Nhạc nhân vật',desc:'Bài hát do seiyuu hát theo nhân vật.',ex:'—'},
+{id:'vtuber',romaji:'VTuber',jp:'Vチューバー',group:'community',vi:'YouTuber ảo',desc:'Nhân vật ảo do người thật điều khiển.',ex:'Hololive, Nijisanji'},
+{id:'gmv',romaji:'AMV / GMV',jp:'—',group:'community',vi:'Video fan-made',desc:'Video ghép cảnh anime với nhạc.',ex:'—'},
+{id:'manga',romaji:'Manga',jp:'漫画',group:'format',vi:'Truyện tranh Nhật',desc:'Truyện tranh đen trắng của Nhật.',ex:'—'},
+{id:'light',romaji:'Light Novel',jp:'ライトノベル',group:'format',vi:'Tiểu thuyết nhẹ',desc:'Tiểu thuyết Nhật có minh họa, thường chuyển thể thành anime.',ex:'Sword Art Online, Re:Zero'},
+{id:'webtoon',romaji:'Webtoon',jp:'ウェブトゥーン',group:'format',vi:'Truyện web',desc:'Truyện tranh dạng dọc, thường Hàn Quốc.',ex:'Tower of God, Solo Leveling'},
+{id:'manhwa',romaji:'Manhwa',jp:'—',group:'format',vi:'Truyện Hàn',desc:'Truyện tranh Hàn Quốc.',ex:'Solo Leveling'},
+{id:'manhua',romaji:'Manhua',jp:'漫畫',group:'format',vi:'Truyện Trung',desc:'Truyện tranh Trung Quốc.',ex:'—'},
+{id:'ova',romaji:'OVA',jp:'オリジナルビデオアニメ',group:'format',vi:'Original Video Animation',desc:'Anime phát hành thẳng ra video, không qua TV.',ex:'Hellsing Ultimate'},
+{id:'ona',romaji:'ONA',jp:'オリジナルネットアニメ',group:'format',vi:'Original Net Animation',desc:'Anime phát hành trên mạng.',ex:'Cyberpunk: Edgerunners'},
+{id:'tv',romaji:'TV Anime',jp:'テレビアニメ',group:'format',vi:'Anime truyền hình',desc:'Anime phát sóng truyền hình hàng tuần.',ex:'—'},
+{id:'movie',romaji:'Movie',jp:'劇場版',group:'format',vi:'Phim điện ảnh',desc:'Anime chiếu rạp.',ex:'Your Name, Spirited Away'},
+{id:'special',romaji:'Special',jp:'スペシャル',group:'format',vi:'Tập đặc biệt',desc:'Tập bổ sung, không thuộc mùa chính.',ex:'—'},
+{id:'recap',romaji:'Recap',jp:'総集編',group:'format',vi:'Tập tóm tắt',desc:'Tập tóm tắt các tập trước.',ex:'—'},
+{id:'cour',romaji:'Cour',jp:'クール',group:'format',vi:'Khóa phát sóng',desc:'3 tháng (10–13 tập). Anime thường 1–2 cour.',ex:'—'},
+{id:'season',romaji:'Season',jp:'シーズン',group:'format',vi:'Phần',desc:'Phần tiếp theo của series.',ex:'Attack on Titan S4'},
+{id:'filler',romaji:'Filler',jp:'フィラー',group:'format',vi:'Tập độn',desc:'Tập không có trong manga gốc, thường để chờ manga.',ex:'Naruto filler'},
+{id:'canon',romaji:'Canon',jp:'カノン',group:'format',vi:'Chính thức',desc:'Nội dung đúng nguyên tác, không phải filler.',ex:'—'},
+{id:'spin',romaji:'Spin-off',jp:'スピンオフ',group:'format',vi:'Ngoại truyện',desc:'Series phụ xoay quanh nhân vật phụ.',ex:'Railgun (từ Index)'},
+{id:'remake',romaji:'Remake',jp:'リメイク',group:'format',vi:'Làm lại',desc:'Làm lại toàn bộ từ đầu với công nghệ mới.',ex:'Hunter x Hunter 2011'},
+{id:'reboot',romaji:'Reboot',jp:'リブート',group:'format',vi:'Khởi động lại',desc:'Khởi động lại thương hiệu với cốt truyện mới.',ex:'—'},
+{id:'adaptation',romaji:'Adaptation',jp:'アダプテーション',group:'format',vi:'Chuyển thể',desc:'Chuyển từ manga/light novel/game sang anime.',ex:'—'},
+{id:'original',romaji:'Original Anime',jp:'オリジナル',group:'format',vi:'Anime gốc',desc:'Anime không dựa trên nguyên tác.',ex:'Cowboy Bebop, Evangelion'},
+{id:'madhouse',romaji:'Madhouse',jp:'マッドハウス',group:'studio',vi:'Studio Madhouse',desc:'Nổi tiếng với chất lượng cao, nhiều anime kinh điển.',ex:'Death Note, Hunter x Hunter, One Punch Man S1'},
+{id:'ghibli',romaji:'Studio Ghibli',jp:'スタジオジブリ',group:'studio',vi:'Studio Ghibli',desc:'Hãng phim của Miyazaki, phong cách riêng.',ex:'Spirited Away, My Neighbor Totoro'},
+{id:'mappa',romaji:'MAPPA',jp:'マッパ',group:'studio',vi:'Studio MAPPA',desc:'Nổi bật với sakuga hành động, JJK, Chainsaw Man.',ex:'Jujutsu Kaisen, Attack on Titan S4'},
+{id:'ufotable',romaji:'ufotable',jp:'ユーフォーテーブル',group:'studio',vi:'Studio ufotable',desc:'Chuyên CGI + hoạt hình 2D, chất lượng cao.',ex:'Demon Slayer, Fate/Zero'},
+{id:'bones',romaji:'Bones',jp:'ボンズ',group:'studio',vi:'Studio Bones',desc:'Hành động, shounen.',ex:'My Hero Academia, Mob Psycho 100'},
+{id:'trigger',romaji:'Trigger',jp:'トリガー',group:'studio',vi:'Studio Trigger',desc:'Phong cách năng động, màu sắc.',ex:'Kill la Kill, Cyberpunk: Edgerunners'},
+{id:'kyoani',romaji:'Kyoto Animation',jp:'京都アニメーション',group:'studio',vi:'Kyoto Animation',desc:'Chất lượng cao, chú trọng đời thường.',ex:'Violet Evergarden, K-On!'},
+{id:'shaft',romaji:'Shaft',jp:'シャフト',group:'studio',vi:'Studio Shaft',desc:'Phong cách độc đáo, cắt cảnh nhanh.',ex:'Monogatari, Madoka Magica'},
+{id:'toei',romaji:'Toei Animation',jp:'東映アニメーション',group:'studio',vi:'Toei Animation',desc:'Studio lâu đời, nhiều shounen dài kỳ.',ex:'One Piece, Dragon Ball'},
+{id:'aic',romaji:'A-1 Pictures',jp:'A-1 Pictures',group:'studio',vi:'A-1 Pictures',desc:'Đa dạng thể loại, nhiều hit.',ex:'Sword Art Online, Kaguya-sama'},
+{id:'wit',romaji:'WIT Studio',jp:'ウィットスタジオ',group:'studio',vi:'WIT Studio',desc:'Hành động, chất lượng cao.',ex:'Attack on Titan S1–3, Spy x Family'},
+{id:'clover',romaji:'Studio CloverWorks',jp:'クローバーワークス',group:'studio',vi:'CloverWorks',desc:'Chất lượng cao, slice-of-life.',ex:'Horimiya, Bocchi the Rock!'},
+{id:'pierrot',romaji:'Pierrot',jp:'ぴえろ',group:'studio',vi:'Studio Pierrot',desc:'Shounen dài kỳ.',ex:'Naruto, Bleach, Tokyo Ghoul'},
+{id:'production',romaji:'Production I.G',jp:'プロダクションI.G',group:'studio',vi:'Production I.G',desc:'Sci-fi, hành động chất lượng.',ex:'Ghost in the Shell, Haikyuu!!'},
+{id:'sunrise',romaji:'Sunrise',jp:'サンライズ',group:'studio',vi:'Sunrise',desc:'Mecha, Gundam.',ex:'Gundam, Code Geass'},
+{id:'gainax',romaji:'Gainax',jp:'ガイナックス',group:'studio',vi:'Gainax',desc:'Kinh điển, phong cách độc đáo.',ex:'Evangelion, Gurren Lagann'},
+{id:'otaku2',romaji:'Otaku culture',jp:'オタク文化',group:'community',vi:'Văn hóa otaku',desc:'Văn hóa đam mê anime/manga/game Nhật.',ex:'Akihabara'},
+{id:'akihabara',romaji:'Akihabara',jp:'秋葉原',group:'community',vi:'Akihabara',desc:'Khu phố otaku nổi tiếng ở Tokyo.',ex:'—'},
+{id:'comiket',romaji:'Comiket',jp:'コミケ',group:'community',vi:'Comiket',desc:'Hội chợ doujinshi lớn nhất Nhật.',ex:'—'},
+{id:'doujin',romaji:'Doujinshi',jp:'同人誌',group:'community',vi:'Truyện tự làm',desc:'Truyện do fan tự vẽ, không chính thức.',ex:'—'},
+{id:'cosplay',romaji:'Cosplay',jp:'コスプレ',group:'community',vi:'Hóa trang',desc:'Hóa trang thành nhân vật.',ex:'—'},
+{id:'convention',romaji:'Convention',jp:'コンベンション',group:'community',vi:'Hội chợ',desc:'Sự kiện giao lưu fan.',ex:'Anime Expo, Japan Expo'},
+{id:'fanart',romaji:'Fanart',jp:'ファンアート',group:'community',vi:'Tranh fan',desc:'Tranh do fan vẽ lại nhân vật.',ex:'—'},
+{id:'fanfic',romaji:'Fanfiction',jp:'ファンフィクション',group:'community',vi:'Truyện fan',desc:'Truyện do fan viết lại.',ex:'—'},
+{id:'headcanon',romaji:'Headcanon',jp:'—',group:'community',vi:'Chính sử cá nhân',desc:'Giả thuyết fan tự nghĩ về nhân vật.',ex:'—'},
+{id:'shipping',romaji:'Shipping',jp:'—',group:'community',vi:'Ghép đôi',desc:'Fan ghép 2 nhân vật thành cặp.',ex:'NaruHina'},
+{id:'otp',romaji:'OTP',jp:'—',group:'community',vi:'Cặp đôi yêu thích',desc:'One True Pairing — cặp đôi fan yêu nhất.',ex:'—'},
+{id:'op2',romaji:'OP (Overpowered)',jp:'—',group:'community',vi:'Mạnh vô đối',desc:'Nhân vật có sức mạnh áp đảo ngay từ đầu.',ex:'Saitama (One Punch Man)'},
+{id:'nerf',romaji:'Nerf',jp:'—',group:'community',vi:'Giảm sức mạnh',desc:'Làm yếu nhân vật/vũ khí (thường trong game).',ex:'—'},
+{id:'buff',romaji:'Buff',jp:'—',group:'community',vi:'Tăng sức mạnh',desc:'Làm mạnh nhân vật/vũ khí.',ex:'—'},
+{id:'plotarmor',romaji:'Plot Armor',jp:'—',group:'community',vi:'Giáp cốt truyện',desc:'Nhân vật sống sót vô lý vì cần cho cốt truyện.',ex:'—'},
+{id:'deathflag',romaji:'Death Flag',jp:'—',group:'community',vi:'Cờ tử',desc:'Dấu hiệu nhân vật sắp chết.',ex:'—'},
+{id:'xianxia',romaji:'Xianxia',jp:'仙侠',group:'genre',vi:'Tiên hiệp',desc:'Tu tiên, kiếm hiệp Trung Quốc.',ex:'—'},
+{id:'wuxia',romaji:'Wuxia',jp:'武侠',group:'genre',vi:'Võ hiệp',desc:'Võ thuật cổ điển Trung Quốc.',ex:'—'},
+{id:'animist',romaji:'Animism',jp:'アニミズム',group:'culture',vi:'Vạn vật hữu linh',desc:'Tín ngưỡng vạn vật có linh hồn, phổ biến trong anime.',ex:'Spirited Away'},
+{id:'tanuki',romaji:'Tanuki',jp:'狸',group:'culture',vi:'Lửng chó',desc:'Sinh vật huyền thoại Nhật, hay biến hình.',ex:'Pom Poko'},
+{id:'kitsune',romaji:'Kitsune',jp:'狐',group:'culture',vi:'Cáo',desc:'Cáo chín đuôi trong thần thoại Nhật.',ex:'—'},
+{id:'yokai',romaji:'Yokai',jp:'妖怪',group:'culture',vi:'Yêu quái',desc:'Sinh vật siêu nhiên Nhật Bản.',ex:'GeGeGe no Kitaro'},
+{id:'kami',romaji:'Kami',jp:'神',group:'culture',vi:'Thần',desc:'Thần linh trong Thần đạo Nhật.',ex:'Kamisama Kiss'},
+{id:'vn_anime',romaji:'Anime (VN)',jp:'—',group:'viet',vi:'Anime',desc:'Cách gọi tắt phổ biến của "anime" tại Việt Nam, giữ nguyên âm tiếng Anh.',ex:'—'},
+{id:'vn_a',romaji:'A (Anime)',jp:'—',group:'viet',vi:'Viết tắt A',desc:'Trong forum VN cũ, "A" là viết tắt của Anime, "M" là Manga. Cặp "A/M" rất phổ biến.',ex:'"A/M gì cũng xem"'},
+{id:'vn_m',romaji:'M (Manga)',jp:'—',group:'viet',vi:'Viết tắt M',desc:'Viết tắt của Manga trong cặp A/M.',ex:'—'},
+{id:'vn_ln',romaji:'LN',jp:'—',group:'viet',vi:'Light Novel',desc:'Viết tắt Light Novel, dùng rộng rãi ở VN.',ex:'"— LN hay hơn anime"'},
+{id:'vn_ova',romaji:'OVA (VN)',jp:'—',group:'viet',vi:'OVA',desc:'Giữ nguyên như quốc tế, đôi khi viết "Ô-va" khi nói.',ex:'—'},
+{id:'vn_bl',romaji:'BL (VN)',jp:'—',group:'viet',vi:'Đam mỹ',desc:'Boys Love, ở VN còn gọi là "đam mỹ" hoặc "bờ-lờ".',ex:'—'},
+{id:'vn_gl',romaji:'GL (VN)',jp:'—',group:'viet',vi:'Bách hợp',desc:'Girls Love, ở VN gọi là "bách hợp".',ex:'—'},
+{id:'vn_wibu',romaji:'Wibu',jp:'—',group:'viet',vi:'Wibu',desc:'Cách gọi chế giễu fan anime cuồng ở VN, tương đương "weaboo".',ex:'—'},
+{id:'vn_phap',romaji:'Pháp sư',jp:'—',group:'viet',vi:'Pháp sư (lóng)',desc:'Chỉ người chuyên "chế" ảnh, video, nội dung anime (từ "pháp sư Trung Hoa").',ex:'—'},
+{id:'vn_seed',romaji:'Seed',jp:'—',group:'viet',vi:'Seed (lóng)',desc:'Chỉ việc share link tải anime/manga lậu — "seed" = gieo link.',ex:'—'},
+{id:'vn_leech',romaji:'Leech',jp:'—',group:'viet',vi:'Leech',desc:'Tải về mà không đóng góp (không seed lại).',ex:'—'},
+{id:'vn_rip',romaji:'Rip',jp:'—',group:'viet',vi:'Rip',desc:'Trích xuất nội dung từ đĩa/stream — "rip" anime, "rip" Blu-ray.',ex:'—'},
+{id:'vn_hardsub',romaji:'Hardsub',jp:'—',group:'viet',vi:'Phụ đề cứng',desc:'Phụ đề gắn cứng vào video, không tắt được.',ex:'—'},
+{id:'vn_softsub',romaji:'Softsub',jp:'—',group:'viet',vi:'Phụ đề mềm',desc:'Phụ đề tách rời, có thể bật/tắt, đổi font.',ex:'—'},
+{id:'vn_raw',romaji:'Raw',jp:'—',group:'viet',vi:'Raw',desc:'Video gốc chưa vietsub, chưa dịch.',ex:'—'},
+{id:'vn_vs',romaji:'VS (Vietsub)',jp:'—',group:'viet',vi:'Vietsub',desc:'Phụ đề tiếng Việt do fan hoặc nhóm dịch.',ex:'—'},
+{id:'vn_fansub',romaji:'Fansub',jp:'—',group:'viet',vi:'Nhóm fansub',desc:'Nhóm fan dịch và phát hành phụ đề.',ex:'—'},
+{id:'vn_bd',romaji:'BD',jp:'—',group:'viet',vi:'Blu-ray',desc:'Bản phát hành Blu-ray, chất lượng cao hơn TV.',ex:'—'},
+{id:'vn_bdmv',romaji:'BDMV',jp:'—',group:'viet',vi:'BDMV',desc:'Bản Blu-ray gốc chưa nén, dung lượng lớn.',ex:'—'},
+{id:'vn_bdrip',romaji:'BDRip',jp:'—',group:'viet',vi:'BDRip',desc:'Bản rip từ Blu-ray, đã nén.',ex:'—'},
+{id:'vn_webdl',romaji:'WebDL',jp:'—',group:'viet',vi:'Web-DL',desc:'Tải trực tiếp từ nền tảng stream (Netflix, Crunchyroll).',ex:'—'},
+{id:'vn_webrip',romaji:'WebRip',jp:'—',group:'viet',vi:'WebRip',desc:'Rip lại từ bản Web-DL.',ex:'—'},
+{id:'vn_hdtv',romaji:'HDTV',jp:'—',group:'viet',vi:'HDTV',desc:'Rip từ truyền hình độ nét cao.',ex:'—'},
+{id:'vn_dvd',romaji:'DVD',jp:'—',group:'viet',vi:'DVD',desc:'Bản phát hành DVD, chất lượng thấp hơn BD.',ex:'—'},
+{id:'vn_1080',romaji:'1080p',jp:'—',group:'viet',vi:'1080p',desc:'Độ phân giải Full HD.',ex:'—'},
+{id:'vn_720',romaji:'720p',jp:'—',group:'viet',vi:'720p',desc:'Độ phân giải HD.',ex:'—'},
+{id:'vn_4k',romaji:'4K / 2160p',jp:'—',group:'viet',vi:'4K',desc:'Độ phân giải Ultra HD.',ex:'—'},
+{id:'vn_hevc',romaji:'HEVC / H.265',jp:'—',group:'viet',vi:'Codec H.265',desc:'Codec nén video hiệu quả hơn H.264, file nhỏ hơn.',ex:'—'},
+{id:'vn_av1',romaji:'AV1',jp:'—',group:'viet',vi:'Codec AV1',desc:'Codec mở, miễn phí, nén tốt hơn HEVC.',ex:'—'},
+{id:'vn_aac',romaji:'AAC',jp:'—',group:'viet',vi:'Codec AAC',desc:'Codec âm thanh phổ biến trong anime.',ex:'—'},
+{id:'vn_flac',romaji:'FLAC',jp:'—',group:'viet',vi:'FLAC',desc:'Âm thanh lossless, dùng cho OST, OP/ED.',ex:'—'},
+{id:'vn_ost2',romaji:'OST (VN)',jp:'—',group:'viet',vi:'OST',desc:'Viết tắt Original Soundtrack, dùng rộng rãi.',ex:'—'},
+{id:'vn_op2',romaji:'OP (VN)',jp:'—',group:'viet',vi:'OP',desc:'Opening — nhạc mở đầu.',ex:'—'},
+{id:'vn_ed2',romaji:'ED (VN)',jp:'—',group:'viet',vi:'ED',desc:'Ending — nhạc kết thúc.',ex:'—'},
+{id:'vn_in',romaji:'IN',jp:'—',group:'viet',vi:'Insert Song',desc:'Ca khúc chèn trong tập.',ex:'—'},
+{id:'vn_bgm3',romaji:'BGM (VN)',jp:'—',group:'viet',vi:'BGM',desc:'Nhạc nền.',ex:'—'},
+{id:'vn_sp',romaji:'SP',jp:'—',group:'viet',vi:'Special',desc:'Tập đặc biệt, OVA lẻ.',ex:'—'},
+{id:'vn_nc',romaji:'NC',jp:'—',group:'viet',vi:'NC (Non-Credit)',desc:'OP/ED không có credit (tên staff), dùng làm nền.',ex:'—'},
+{id:'vn_ncop',romaji:'NCOP',jp:'—',group:'viet',vi:'NCOP',desc:'Non-Credit Opening.',ex:'—'},
+{id:'vn_nced',romaji:'NCED',jp:'—',group:'viet',vi:'NCED',desc:'Non-Credit Ending.',ex:'—'},
+{id:'vn_pv',romaji:'PV',jp:'—',group:'viet',vi:'PV',desc:'Promotion Video — trailer, teaser.',ex:'—'},
+{id:'vn_cm',romaji:'CM',jp:'—',group:'viet',vi:'CM',desc:'Commercial — quảng cáo ngắn.',ex:'—'},
+{id:'vn_cv',romaji:'CV',jp:'—',group:'viet',vi:'CV',desc:'Character Voice — seiyuu. Ở VN "CV" cũng dùng.',ex:'—'},
+{id:'vn_va',romaji:'VA',jp:'—',group:'viet',vi:'VA',desc:'Voice Actor — seiyuu (quốc tế dùng).',ex:'—'},
+{id:'vn_char',romaji:'Char',jp:'—',group:'viet',vi:'Char',desc:'Character — nhân vật.',ex:'—'},
+{id:'vn_ep',romaji:'Ep',jp:'—',group:'viet',vi:'Ep',desc:'Episode — tập.',ex:'—'},
+{id:'vn_s1',romaji:'S1 / S2',jp:'—',group:'viet',vi:'Season',desc:'Mùa 1, mùa 2.',ex:'—'},
+{id:'vn_cour2',romaji:'Cour (VN)',jp:'—',group:'viet',vi:'Cour',desc:'3 tháng phát sóng (~12–13 tập).',ex:'—'},
+{id:'vn_ss',romaji:'SS',jp:'—',group:'viet',vi:'SS',desc:'Special Season — mùa đặc biệt.',ex:'—'},
+{id:'vn_movie2',romaji:'Movie (VN)',jp:'—',group:'viet',vi:'Movie',desc:'Phim điện ảnh.',ex:'—'},
+{id:'vn_ss2',romaji:'Short',jp:'—',group:'viet',vi:'Short',desc:'Phim ngắn, ONAs ngắn.',ex:'—'},
+{id:'vn_amv',romaji:'AMV',jp:'—',group:'viet',vi:'AMV',desc:'Anime Music Video — video fan ghép cảnh + nhạc.',ex:'—'},
+{id:'vn_mad',romaji:'MAD',jp:'—',group:'viet',vi:'MAD',desc:'Anime/Manga MAD — video fan kiểu Nhật, thường chỉnh sửa cảnh gốc.',ex:'—'},
+{id:'vn_mmd',romaji:'MMD',jp:'—',group:'viet',vi:'MMD',desc:'MikuMikuDance — phần mềm làm hoạt hình 3D bằng model Vocaloid.',ex:'—'},
+{id:'vn_vocaloid',romaji:'Vocaloid',jp:'—',group:'viet',vi:'Vocaloid',desc:'Phần mềm giọng hát tổng hợp (Hatsune Miku…).',ex:'—'},
+{id:'vn_utaite',romaji:'Utaite',jp:'—',group:'viet',vi:'Utaite',desc:'Ca sĩ cover trên mạng (NicoNico, YouTube).',ex:'—'},
+{id:'vn_vn',romaji:'VN',jp:'—',group:'viet',vi:'Visual Novel',desc:'Game đọc truyện có hình ảnh — "visual novel". Cũng là viết tắt "Việt Nam" trong ngữ cảnh khác.',ex:'—'},
+{id:'vn_vnds',romaji:'VNDS',jp:'—',group:'viet',vi:'VNDS',desc:'Visual Novel DS — trình đọc VN trên Nintendo DS.',ex:'—'},
+{id:'vn_eroge',romaji:'Eroge',jp:'—',group:'viet',vi:'Eroge',desc:'Visual novel người lớn (18+).',ex:'—'},
+{id:'vn_galge',romaji:'Galgame',jp:'—',group:'viet',vi:'Galgame',desc:'Game hẹn hò với nhân vật nữ (gal).',ex:'—'},
+{id:'vn_otome',romaji:'Otome game',jp:'—',group:'viet',vi:'Otome game',desc:'Game hẹn hò dành cho nữ.',ex:'—'},
+{id:'vn_nsfw',romaji:'NSFW',jp:'—',group:'viet',vi:'NSFW',desc:'Not Safe For Work — nội dung 18+, không nên xem nơi công cộng.',ex:'—'},
+{id:'vn_sfw',romaji:'SFW',jp:'—',group:'viet',vi:'SFW',desc:'Safe For Work — nội dung an toàn.',ex:'—'},
+{id:'vn_lewd',romaji:'Lewd',jp:'—',group:'viet',vi:'Lewd',desc:'Gợi cảm, nhạy cảm.',ex:'—'},
+{id:'vn_headpat',romaji:'Headpat',jp:'—',group:'viet',vi:'Headpat',desc:'Xoa đầu nhân vật dễ thương.',ex:'—'},
+{id:'vn_glomp',romaji:'Glomp',jp:'—',group:'viet',vi:'Glomp',desc:'Ôm nhảy bổ vào người khác (kiểu anime).',ex:'—'},
+{id:'vn_kawaii',romaji:'Kawaii',jp:'かわいい',group:'viet',vi:'Dễ thương',desc:'Dễ thương trong tiếng Nhật, dùng rộng rãi.',ex:'—'},
+{id:'vn_sugoi',romaji:'Sugoi',jp:'すごい',group:'viet',vi:'Tuyệt vời',desc:'Tuyệt vời, giỏi quá.',ex:'—'},
+{id:'vn_yabai',romaji:'Yabai',jp:'やばい',group:'viet',vi:'Nguy hiểm / đỉnh',desc:'Tùy ngữ cảnh: nguy hiểm, tệ, hoặc cực đỉnh.',ex:'—'},
+{id:'vn_kowai',romaji:'Kowai',jp:'怖い',group:'viet',vi:'Đáng sợ',desc:'Sợ hãi.',ex:'—'},
+{id:'vn_urusai',romaji:'Urusai',jp:'うるさい',group:'viet',vi:'Im đi',desc:'Im đi, ồn ào quá.',ex:'—'},
+{id:'vn_baka',romaji:'Baka',jp:'バカ',group:'viet',vi:'Ngốc',desc:'Ngốc, đần (thường thân mật).',ex:'—'},
+{id:'vn_aho',romaji:'Aho',jp:'アホ',group:'viet',vi:'Ngốc (Kansai)',desc:'Ngốc — phương ngữ Kansai.',ex:'—'},
+{id:'vn_oppai',romaji:'Oppai',jp:'おっぱい',group:'viet',vi:'Ngực',desc:'Ngực (tiếng Nhật thông tục).',ex:'—'},
+{id:'vn_loli',romaji:'Loli',jp:'ロリ',group:'viet',vi:'Loli',desc:'Nhân vật nữ nhỏ tuổi/trông nhỏ tuổi. Nhạy cảm — tránh lạm dụng.',ex:'—'},
+{id:'vn_shota',romaji:'Shota',jp:'ショタ',group:'viet',vi:'Shota',desc:'Nhân vật nam nhỏ tuổi. Nhạy cảm.',ex:'—'},
+{id:'vn_onee',romaji:'Onee-san (lóng)',jp:'お姉さん',group:'viet',vi:'Onee-san',desc:'Chị gái / phụ nữ lớn tuổi hơn, dùng rộng.',ex:'—'},
+{id:'vn_ara',romaji:'Ara ara',jp:'あらあら',group:'viet',vi:'Ara ara',desc:'Câu cảm thán của phụ nữ trưởng thành, thường mang ý trêu chọc.',ex:'—'},
+{id:'vn_nyan',romaji:'Nyan',jp:'にゃん',group:'viet',vi:'Nyan',desc:'Tiếng mèo kêu, dùng làm hậu tố dễ thương.',ex:'—'},
+{id:'vn_nya',romaji:'Nya',jp:'ニャ',group:'viet',vi:'Nya',desc:'Biến thể của "nyan".',ex:'—'},
+{id:'vn_deshita',romaji:'Deshita',jp:'でした',group:'viet',vi:'Deshita',desc:'Trợ động từ quá khứ lịch sự, đôi khi dùng đùa.',ex:'—'},
+{id:'vn_desu',romaji:'Desu',jp:'です',group:'viet',vi:'Desu',desc:'Trợ động từ "là", dùng đùa trong câu.',ex:'—'},
+{id:'vn_www',romaji:'www',jp:'www',group:'viet',vi:'www',desc:'Tiếng cười trong tiếng Nhật (warau → w), tương đương "hahaha".',ex:'—'},
+{id:'vn_kusa',romaji:'Kusa',jp:'草',group:'viet',vi:'Kusa',desc:'"Cỏ" — tiếng cười trong tiếng Nhật (đồng âm với w).',ex:'—'},
+{id:'vn_orz',romaji:'orz',jp:'—',group:'viet',vi:'orz',desc:'Hình người quỳ gối — thất vọng, tuyệt vọng.',ex:'—'},
+{id:'vn_otl',romaji:'OTL',jp:'—',group:'viet',vi:'OTL',desc:'Biến thể của "orz".',ex:'—'},
+{id:'vn_tl',romaji:'TL;DR',jp:'—',group:'viet',vi:'TL;DR',desc:'Too Long; Didn\'t Read — quá dài, không đọc.',ex:'—'},
+{id:'vn_imo',romaji:'IMO',jp:'—',group:'viet',vi:'IMO',desc:'In My Opinion — theo ý tôi.',ex:'—'},
+{id:'vn_imho',romaji:'IMHO',jp:'—',group:'viet',vi:'IMHO',desc:'In My Humble Opinion — theo ý kiến khiêm tốn của tôi.',ex:'—'},
+{id:'vn_afaik',romaji:'AFAIK',jp:'—',group:'viet',vi:'AFAIK',desc:'As Far As I Know — theo tôi biết.',ex:'—'},
+{id:'vn_iirc',romaji:'IIRC',jp:'—',group:'viet',vi:'IIRC',desc:'If I Recall Correctly — nếu tôi nhớ không nhầm.',ex:'—'},
+{id:'vn_tbh',romaji:'TBH',jp:'—',group:'viet',vi:'TBH',desc:'To Be Honest — thật lòng mà nói.',ex:'—'},
+{id:'vn_ftw',romaji:'FTW',jp:'—',group:'viet',vi:'FTW',desc:'For The Win — tuyệt vời, ủng hộ.',ex:'—'},
+{id:'vn_ftl',romaji:'FTL',jp:'—',group:'viet',vi:'FTL',desc:'For The Lose — tệ, phản đối.',ex:'—'},
+{id:'vn_gg',romaji:'GG',jp:'—',group:'viet',vi:'GG',desc:'Good Game — trò chơi hay, kết thúc tốt.',ex:'—'},
+{id:'vn_afk',romaji:'AFK',jp:'—',group:'viet',vi:'AFK',desc:'Away From Keyboard — rời bàn phím.',ex:'—'},
+{id:'vn_brb',romaji:'BRB',jp:'—',group:'viet',vi:'BRB',desc:'Be Right Back — quay lại ngay.',ex:'—'},
+{id:'vn_btw',romaji:'BTW',jp:'—',group:'viet',vi:'BTW',desc:'By The Way — nhân tiện.',ex:'—'},
+{id:'vn_idk',romaji:'IDK',jp:'—',group:'viet',vi:'IDK',desc:'I Don\'t Know — tôi không biết.',ex:'—'},
+{id:'vn_ikr',romaji:'IKR',jp:'—',group:'viet',vi:'IKR',desc:'I Know, Right? — tôi biết mà, đúng không?',ex:'—'},
+{id:'vn_omg',romaji:'OMG',jp:'—',group:'viet',vi:'OMG',desc:'Oh My God — trời ơi.',ex:'—'},
+{id:'vn_lol',romaji:'LOL',jp:'—',group:'viet',vi:'LOL',desc:'Laugh Out Loud — cười lớn.',ex:'—'},
+{id:'vn_rofl',romaji:'ROFL',jp:'—',group:'viet',vi:'ROFL',desc:'Rolling On Floor Laughing — cười lăn lộn.',ex:'—'},
+{id:'vn_afa',romaji:'AFA',jp:'—',group:'viet',vi:'AFA',desc:'As Far As — theo như.',ex:'—'},
+{id:'vn_wtf',romaji:'WTF',jp:'—',group:'viet',vi:'WTF',desc:'What The F*** — cái quái gì.',ex:'—'},
+{id:'vn_goat',romaji:'GOAT',jp:'—',group:'viet',vi:'GOAT',desc:'Greatest Of All Time — xuất sắc nhất mọi thời đại.',ex:'—'},
+{id:'vn_goated',romaji:'Goated',jp:'—',group:'viet',vi:'Goated',desc:'Cực đỉnh, được xem là GOAT.',ex:'—'},
+{id:'vn_based',romaji:'Based',jp:'—',group:'viet',vi:'Based',desc:'Khen ngợi quan điểm độc lập, không sợ chỉ trích.',ex:'—'},
+{id:'vn_cringe',romaji:'Cringe',jp:'—',group:'viet',vi:'Cringe',desc:'Xấu hổ, khó coi.',ex:'—'},
+{id:'vn_pog',romaji:'Pog / Poggers',jp:'—',group:'viet',vi:'Pog',desc:'Phấn khích, tuyệt vời (từ Twitch).',ex:'—'},
+{id:'vn_ratio',romaji:'Ratio',jp:'—',group:'viet',vi:'Ratio',desc:'Bị nhiều người phản đối hơn ủng hộ trên mạng.',ex:'—'},
+{id:'vn_ez',romaji:'EZ',jp:'—',group:'viet',vi:'EZ',desc:'Easy — dễ.',ex:'—'},
+{id:'vn_np',romaji:'NP',jp:'—',group:'viet',vi:'NP',desc:'No Problem — không vấn đề.',ex:'—'},
+{id:'vn_ty',romaji:'TY',jp:'—',group:'viet',vi:'TY',desc:'Thank You — cảm ơn.',ex:'—'},
+{id:'vn_nsfw2',romaji:'NSFL',jp:'—',group:'viet',vi:'NSFL',desc:'Not Safe For Life — nội dung kinh khủng, không nên xem.',ex:'—'},
+{id:'vn_tw',romaji:'TW',jp:'—',group:'viet',vi:'TW',desc:'Trigger Warning — cảnh báo nội dung nhạy cảm.',ex:'—'}
+];
+const GROUPS=[['all',0],['genre',1],['tech',2],['culture',3],['studio',4],['format',5],['community',6],['viet',7]];
+const gpName=k=>k==='all'?t(1):k==='genre'?t(2):k==='tech'?t(3):k==='culture'?t(4):k==='studio'?t(5):k==='format'?t(6):k==='community'?t(7):L('Viết tắt VN','VN abbreviations');
+
+/* ================= state UI ================= */
+let group='all',letter='',query='',favOnly=false,favIds=new Set(),cmpPick=[],quiz=null;
+let filt=[];
+
+/* ================= tìm kiếm fuzzy ================= */
+const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').trim();
+function matchScore(x,q){
+  if(!q)return 1;
+  const h=norm(x);
+  if(h===q)return 100;
+  if(h.includes(q))return 80-Math.abs(h.length-q.length)*0.2;
+  let i=0;for(const c of h){if(c===q[i])i++;if(i===q.length)return 40}
+  return 0;
+}
+function filterTerms(){
+  const q=norm(query);
+  filt=TERMS.filter(x=>{
+    if(group!=='all'&&x.group!==group)return false;
+    if(favOnly&&!favIds.has(x.id))return false;
+    if(letter){const w=norm(x.romaji)[0].toUpperCase();if(w!==letter)return false}
+    if(!q)return true;
+    const hay=norm([x.romaji,x.jp,x.vi,x.desc,x.ex].join(' '));
+    return hay.includes(q)||matchScore(x.romaji,q)>0;
+  });
+  if(q){filt.sort((a,b)=>matchScore(b.romaji,q)-matchScore(a.romaji,q))}
+  else{filt.sort((a,b)=>a.romaji.localeCompare(b.romaji))}
+}
+
+/* ================= render ================= */
+function renderChips(){
+  $('chips').innerHTML=GROUPS.map(([k])=>{
+    const n=k==='all'?TERMS.length:TERMS.filter(x=>x.group===k).length;
+    return`<button class="chip${group===k?' sel':''}" data-g="${k}">${esc(gpName(k))} <small style="opacity:.7">${n}</small></button>`
+  }).join('');
+}
+function renderAZ(){
+  const L='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  $('az').innerHTML=[...L].map(c=>`<button data-a="${c}" class="${letter===c?'act':''}">${c}</button>`).join('')+(letter?`<button data-a="" style="width:auto;padding:0 10px">✕</button>`:'');
+}
+function renderSug(){
+  const picks=[TERMS.find(x=>x.id==='isekai'),TERMS.find(x=>x.id==='ova'),TERMS.find(x=>x.id==='sakuga'),TERMS.find(x=>x.id==='tsundere'),TERMS.find(x=>x.id==='cour')].filter(Boolean);
+  $('sug').innerHTML=`<span style="font-size:.75rem;color:var(--sub);align-self:center;padding:0 4px">Gợi ý:</span>`+picks.map(x=>`<button data-sug="${x.id}">${esc(x.romaji)}</button>`).join('');
+}
+function renderGrid(){
+  if(!filt.length){$('out').innerHTML=`<p class="empty">${esc(t(17))}</p>`;return}
+  $('out').innerHTML=`<div class="grid">${filt.map(x=>{
+    const isF=favIds.has(x.id);
+    return`<div class="tcard" data-t="${x.id}"><button class="star${isF?' fav':''}" data-fav="${x.id}" type="button">${isF?'★':'☆'}</button><h4>${esc(x.romaji)}${x.jp&&x.jp!=='—'?` <span class="jp" style="font-size:.75rem">(${esc(x.jp)})</span>`:''}</h4><p>${esc(x.desc)}</p><div style="margin-top:8px"><span class="tag">${esc(gpName(x.group))}</span></div></div>`
+  }).join('')}</div>`
+}
+function render(){
+  $('h1').textContent=L('Từ điển thuật ngữ anime','Anime terms dictionary');
+  $('sub').textContent=L(`${TERMS.length} thuật ngữ phổ biến, kèm giải thích và ví dụ.`,'120 common terms with explanations and examples.');
+  $('q').placeholder=t(0);
+  $('hc').textContent=t(9);
+  $('foot').textContent=L('Dữ liệu tham khảo từ cộng đồng anime quốc tế. Chỉ dùng cho mục đích cá nhân.','Reference from the international anime community. For personal use.');
+  filterTerms();renderChips();renderAZ();renderGrid();renderHist();renderSug();
+}
+
+/* ================= tìm kiếm & lọc ================= */
+$('q').oninput=e=>{query=e.target.value;filterTerms();renderGrid()};
+document.addEventListener('click',async e=>{
+  const g=e.target.closest('[data-g]');if(g){group=g.dataset.g;filterTerms();renderChips();renderGrid();return}
+  const a=e.target.closest('[data-a]');if(a){letter=a.dataset.a;filterTerms();renderAZ();renderGrid();return}
+  const s=e.target.closest('[data-sug]');if(s){const x=TERMS.find(z=>z.id===s.dataset.sug);if(x)openTerm(x);return}
+  const f=e.target.closest('[data-fav]');if(f){e.stopPropagation();const id=f.dataset.fav;if(favIds.has(id)){favIds.delete(id);await dbx('fav','readwrite',q=>q.delete(id))}else{favIds.add(id);await dbx('fav','readwrite',q=>q.put({id}))}filterTerms();renderGrid();return}
+  const t=e.target.closest('[data-t]');if(t){const x=TERMS.find(z=>z.id===t.dataset.t);if(x)openTerm(x);return}
+  const b=e.target.closest('button');if(!b)return;const d=b.dataset;
+  if(b.id==='sh-x')closeSheet();
+  else if(d.cmp){toggleCmp(d.cmp)}
+  else if(b.id==='cmp-run'){showCmp();closeSheet()}
+  else if(d.opt!==undefined){answerQuiz(+d.opt)}
+  else if(b.id==='qz-next'){newQuiz()}
+  else if(b.id==='h-clr'){if(confirm(t(16))){await dbx('hist','readwrite',q=>q.clear());renderHist()}}
+  else if(d.h){openHist(d.h)}
+});
+
+/* ================= sheet thuật ngữ ================= */
+function openSheet(h){$('sheet').innerHTML=h+`<button class="alt" style="width:100%;margin-top:10px" type="button" id="sh-x">${esc(t(11))}</button>`;$('mask').classList.add('open')}
+const closeSheet=()=>$('mask').classList.remove('open');$('mask').onclick=e=>{if(e.target.id==='mask')closeSheet()};
+async function openTerm(x){
+  const isF=favIds.has(x.id);
+  openSheet(`<h3>${esc(x.romaji)} ${x.jp&&x.jp!=='—'?`<span style="font-size:.75rem;color:var(--sub)">${esc(x.jp)}</span>`:''}</h3>
+  <div class="grp" style="padding:14px"><div style="font-size:.75rem;color:var(--sub);margin-bottom:6px">${esc(gpName(x.group))}</div><div style="font-size:.9375rem;line-height:1.5">${esc(x.desc)}</div>${x.ex?`<div style="margin-top:10px;font-size:.8125rem;color:var(--sub)">Ví dụ: ${esc(x.ex)}</div>`:''}</div>
+  <div class="kr" style="flex-wrap:wrap"><button class="${isF?'dng':'alt'}" data-fav="${x.id}" type="button" style="flex:1">${isF?'★ '+L('Bỏ yêu thích','Unfavorite'):'☆ '+L('Yêu thích','Favorite')}</button><button class="alt" data-cmp="${x.id}" type="button" style="flex:1">⇄ ${L('So sánh','Compare')}</button></div>`);
+  try{await dbx('hist','readwrite',q=>q.put({id:x.id,t:Date.now(),romaji:x.romaji,vi:x.vi}))}catch(e){}
+  renderHist();
+}
+
+/* ================= lịch sử ================= */
+async function renderHist(){
+  let all=[];try{all=((await dbx('hist','readonly',q=>q.getAll()))||[]).sort((a,b)=>b.t-a.t).slice(0,20)}catch(e){}
+  if(!all.length){$('hist').innerHTML=`<p class="empty">${esc(t(17))}</p>`;return}
+  $('hist').innerHTML=`<div style="display:flex;flex-wrap:wrap;gap:6px;padding:12px">${all.map(h=>`<button class="chip" data-h="${h.id}">${esc(h.romaji)}</button>`).join('')}</div><div style="padding:0 12px 12px"><button class="dng sm" id="h-clr" type="button">${esc(t(16))}</button></div>`
+}
+async function openHist(id){const x=TERMS.find(z=>z.id===id);if(x)openTerm(x)}
+
+/* ================= so sánh ================= */
+function toggleCmp(id){const i=cmpPick.indexOf(id);if(i>=0)cmpPick.splice(i,1);else{if(cmpPick.length>=2)cmpPick.shift();cmpPick.push(id)}toast(L('Đã chọn '+cmpPick.length+'/2','Picked '+cmpPick.length+'/2'))}
+function showCmp(){
+  if(cmpPick.length<2){toast(L('Chọn 2 thuật ngữ','Pick 2 terms'));return}
+  const [a,b]=cmpPick.map(id=>TERMS.find(x=>x.id===id));
+  $('cmpbox').innerHTML=`<div class="grp"><div style="padding:14px"><b>${L('So sánh','Compare')}: ${esc(a.romaji)} vs ${esc(b.romaji)}</b></div><div class="cmp"><div class="col"><h4>${esc(a.romaji)}</h4><div style="font-size:.75rem;color:var(--sub);margin-bottom:6px">${esc(gpName(a.group))}</div><p>${esc(a.desc)}</p>${a.ex?`<p style="font-size:.75rem">Ví dụ: ${esc(a.ex)}</p>`:''}</div><div class="col"><h4>${esc(b.romaji)}</h4><div style="font-size:.75rem;color:var(--sub);margin-bottom:6px">${esc(gpName(b.group))}</div><p>${esc(b.desc)}</p>${b.ex?`<p style="font-size:.75rem">Ví dụ: ${esc(b.ex)}</p>`:''}</div></div></div>`;
+  scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ================= quiz ================= */
+function newQuiz(){
+  const idx=Math.floor(Math.random()*TERMS.length),t0=TERMS[idx];
+  const opts=[t0];while(opts.length<4){const r=TERMS[Math.floor(Math.random()*TERMS.length)];if(!opts.includes(r))opts.push(r)}
+  opts.sort(()=>Math.random()-0.5);
+  quiz={t0,opts,score:quiz?quiz.score:0,streak:quiz?quiz.streak:0,answered:false};
+  $('cmpbox').innerHTML=`<div class="grp"><div class="qz"><h3>${esc(t0.desc)}</h3><div class="meta"><span>${esc(t(24))}: ${quiz.score}</span><span>${esc(t(25))}: ${quiz.streak}</span></div><div class="opt">${opts.map((o,i)=>`<button data-opt="${i}" type="button">${esc(o.romaji)}</button>`).join('')}</div></div></div>`;
+  scrollTo({top:0,behavior:'smooth'});
+}
+function answerQuiz(i){
+  if(quiz.answered)return;quiz.answered=true;
+  const correct=quiz.opts[i].id===quiz.t0.id;
+  document.querySelectorAll('[data-opt]').forEach(b=>{b.disabled=true;const v=quiz.opts[+b.dataset.opt];if(v.id===quiz.t0.id)b.classList.add('correct');else if(b.dataset.opt==i&&!correct)b.classList.add('wrong')});
+  if(correct){quiz.score++;quiz.streak++}else{quiz.streak=0}
+  setTimeout(newQuiz,1200);
+}
+
+/* ================= sheet cài đặt ================= */
+const sw=(k,v)=>`<div class="row"><span>${esc(v)}</span><div class="switch${S[k]?' on':''}" role="switch" tabindex="0" aria-checked="${!!S[k]}" data-sw="${k}"></div></div>`;
+function openSettings(){
+  openSheet(`<h3>${esc(t(10))}</h3>
+  <span class="cap">${L('Giao diện','Appearance')}</span>
+  <div class="grp">
+    ${sw('gl',L('Hiệu ứng Liquid Glass','Liquid Glass effect'))}
+    ${sw('anim',L('Hiệu ứng chuyển động','Animations'))}
+    ${sw('compact',L('Giao diện gọn','Compact'))}
+    <div class="row"><span>${L('Chế độ','Mode')}</span><select data-set="theme" style="width:140px">${[['auto',L('Tự động','Auto')],['light',L('Sáng','Light')],['dark',L('Tối','Dark')]].map(o=>`<option value="${o[0]}"${S.theme===o[0]?' selected':''}>${o[1]}</option>`).join('')}</select></div>
+    <div class="row"><span>${L('Màu nhấn','Accent')}</span><span>${['','#FF9500','#34C759','#AF52DE','#FF2D55'].map(c=>`<button type="button" class="${S.acc===c?'':'alt'}" data-acc="${c}" style="${c?'background:'+c+';color:#fff;':''}width:30px;height:30px;padding:0;margin-left:6px">${c?'':'↺'}</button>`).join('')}</span></div>
+    <div class="row"><span>${L('Cỡ chữ','Text size')}</span><select data-set="fs" data-n="1" style="width:110px">${[90,100,110,125].map(v=>`<option value="${v}"${S.fs==v?' selected':''}>${v}%</option>`).join('')}</select></div>
+    <div class="row"><span>${L('Ngôn ngữ','Language')}</span><select data-set="lang" style="width:170px">${Object.keys(LN).map(k=>`<option value="${k}"${S.lang===k?' selected':''}>${LN[k]}</option>`).join('')}</select></div>
+  </div>
+  <span class="cap">${L('Hình nền','Background')}</span>
+  <div class="grp">
+    <div class="row"><span>${L('Ảnh từ thiết bị','Image from device')}</span><span><label class="btn alt sm" for="bg-in">${L('Chọn','Choose')}</label><input type="file" id="bg-in" accept="image/*"> <button class="dng sm" id="bg-rm" type="button">✕</button></span></div>
+    <div class="row"><span>${L('Mẫu','Presets')}</span><span>${['','linear-gradient(135deg,#0a84ff,#bf5af2)','linear-gradient(135deg,#ff9500,#ff2d55)','linear-gradient(135deg,#30d158,#0a84ff)','linear-gradient(135deg,#1c1c1e,#3a3a3c)'].map((g,i)=>`<button type="button" class="${(S.bgPre||'')===g&&(g||!bgUrl)?'':'alt'}" data-pre="${i}" style="${g?'background:'+g+';':''}width:30px;height:30px;padding:0;margin-left:6px">${g?'':'∅'}</button>`).join('')}</span></div>
+    <div class="row"><span>${L('Độ phủ','Overlay')}</span><input type="range" min="0" max="90" value="${S.bgDim}" data-set="bgDim" data-n="1"></div>
+    <div class="row"><span>${L('Làm mờ','Blur')}</span><input type="range" min="0" max="30" value="${S.bgBlur}" data-set="bgBlur" data-n="1"></div>
+  </div>
+  <span class="cap">${L('Âm nhạc','Music')}</span>
+  <div class="grp"><div class="row"><span>${L('Phát nhạc từ thiết bị','Play music')}</span><button class="sm" id="open-mus" type="button">♪ ${L('Mở','Open')}</button></div></div>
+  <span class="cap">${L('Hệ thống','System')}</span>
+  <div class="grp">
+    ${sw('hap',L('Rung phản hồi','Haptic'))}
+    ${sw('confirm',L('Hỏi xác nhận trước khi xoá','Confirm before deleting'))}
+    <div class="row" style="gap:6px;flex-wrap:wrap"><button class="alt sm" id="s-exp" type="button">${esc(t(13))}</button><label class="btn alt sm" for="s-imp">${esc(t(14))}</label><input type="file" id="s-imp" accept=".json"><button class="dng sm" id="s-rst" type="button">${esc(t(15))}</button></div>
+  </div>`)
+}
+function togg(w){const k=w.dataset.sw;S[k]=!S[k];w.classList.toggle('on',S[k]);w.setAttribute('aria-checked',S[k]);applyS()}
+document.addEventListener('input',e=>{const t0=e.target;if(t0.dataset&&t0.dataset.set&&(t0.type==='range'||t0.type==='password'||t0.type==='text')){const k=t0.dataset.set;S[k]=t0.dataset.n?+t0.value:t0.value;applyS();if(/^bg/.test(k))applyBg()}});
+document.addEventListener('change',async e=>{const t0=e.target;if(t0.dataset&&t0.dataset.set&&t0.tagName==='SELECT'){const k=t0.dataset.set;S[k]=t0.dataset.n?+t0.value:t0.value;applyS();if(k==='lang'){render();openSettings()}if(/^bg/.test(k))applyBg()}
+else if(t0.id==='bg-in'){const f=t0.files[0];t0.value='';if(f){await setBg(f);openSettings()}}
+else if(t0.id==='mp-add'){const fl=[...t0.files];t0.value='';addSongs(fl)}
+else if(t0.id==='s-imp'){const f=t0.files[0];if(!f)return;try{S=Object.assign({},S0,S,JSON.parse(await f.text()));applyS();applyBg();render();openSettings();toast(L('Đã nhập','Imported'))}catch(x){toast(L('Tệp lỗi','Invalid file'))}}});
+document.addEventListener('click',async e=>{
+  const w=e.target.closest('[data-sw]');if(w){togg(w);return}
+  const b=e.target.closest('button');if(!b)return;const d=b.dataset;
+  if(d.acc!==undefined){S.acc=d.acc;applyS();openSettings()}
+  else if(d.pre!==undefined){const g=['','linear-gradient(135deg,#0a84ff,#bf5af2)','linear-gradient(135deg,#ff9500,#ff2d55)','linear-gradient(135deg,#30d158,#0a84ff)','linear-gradient(135deg,#1c1c1e,#3a3a3c)'][+d.pre];S.bgPre=g;if(g)await removeBg();applyS();applyBg();openSettings()}
+  else if(b.id==='bg-rm'){await removeBg();S.bgPre='';applyS();applyBg();openSettings()}
+  else if(b.id==='open-mus')openMus();
+  else if(b.id==='s-exp')dl(new Blob([JSON.stringify(Object.assign({},S),null,2)],{type:'application/json'}),'animepedia_settings.json')
+  else if(b.id==='s-rst'){if(confirm(L('Đặt lại?','Reset?'))){S=Object.assign({},S0,{lang:S.lang});applyS();applyBg();render();openSettings()}}
+  else if(b.id==='mp-pp'||b.id==='mini-pp'){if(ci<0)playIdx(0);else aud.paused?aud.play().catch(()=>{}):aud.pause()}
+  else if(b.id==='mp-pv')nextSong(-1);else if(b.id==='mp-nx')nextSong(1);
+  else if(b.id==='mp-sh'){S.shuf=!S.shuf;applyS();musUpd()}else if(b.id==='mp-rp'){S.rep=(S.rep+1)%3;applyS();musUpd()}
+  else if(b.id==='mp-clr'){if(confirm(L('Xoá danh sách?','Clear list?'))){aud.pause();aud.removeAttribute('src');ci=-1;songs=[];try{await dbx('songs','readwrite',q=>q.clear())}catch(x){}musUpd()}}
+  else if(d.mp!==undefined)playIdx(+d.mp);
+  else if(d.md){const id=d.md,cid=ci>=0?songs[ci].id:null;try{await dbx('songs','readwrite',q=>q.delete(+id))}catch(x){}songs=songs.filter(q=>String(q.id)!==id);if(String(cid)===id){aud.pause();aud.removeAttribute('src');ci=-1}else ci=cid?songs.findIndex(q=>q.id===cid):-1;musUpd()}
+});
+document.addEventListener('keydown',e=>{const t0=e.target;if((e.key===' '||e.key==='Enter')&&t0.dataset&&t0.dataset.sw){e.preventDefault();togg(t0)}if(e.key==='Escape')closeSheet()});
+
+/* ================= hình nền ================= */
+let bgUrl='',bgInfo=null;
+function applyBg(){const b=$('bg'),has=bgUrl||S.bgPre;document.documentElement.classList.toggle('hasbg',!!has);b.style.display=has?'block':'none';if(!has)return;b.style.backgroundImage=bgUrl?`url("${bgUrl}")`:S.bgPre;b.style.backgroundSize=bgUrl?S.bgFit:'cover';b.style.backgroundPosition=S.bgPos;b.style.setProperty('--d',S.bgDim);b.style.filter=S.bgBlur?`blur(${S.bgBlur}px)`:'none'}
+async function loadBg(){try{const r=await dbx('kv','readonly',q=>q.get('bg'));if(r&&r.blob){bgUrl=URL.createObjectURL(r.blob);bgInfo=r}}catch(e){}applyBg()}
+async function removeBg(){try{await dbx('kv','readwrite',q=>q.delete('bg'))}catch(e){}if(bgUrl)URL.revokeObjectURL(bgUrl);bgUrl='';bgInfo=null}
+async function setBg(f){toast(L('Đang tối ưu…','Optimizing…'));try{let bmp;try{bmp=await createImageBitmap(f)}catch(e){bmp=await new Promise((r,j)=>{const i=new Image();i.onload=()=>r(i);i.onerror=j;i.src=URL.createObjectURL(f)})}
+const W=bmp.width||bmp.naturalWidth,H=bmp.height||bmp.naturalHeight,T2=Math.min(2560,Math.max(1280,Math.round(Math.max(innerWidth,innerHeight)*Math.min(devicePixelRatio||1,2)))),k=Math.min(1,T2/Math.max(W,H)),c=document.createElement('canvas');c.width=Math.round(W*k);c.height=Math.round(H*k);
+const x=c.getContext('2d');x.imageSmoothingQuality='high';x.drawImage(bmp,0,0,c.width,c.height);let blob=await new Promise(r=>c.toBlob(r,'image/webp',.8));if(!blob||blob.type!=='image/webp')blob=await new Promise(r=>c.toBlob(r,'image/jpeg',.82));
+const rec={blob,w:c.width,h:c.height};try{await dbx('kv','readwrite',q=>q.put(rec,'bg'))}catch(e){toast(L('Bộ nhớ đầy','Storage full'))}
+if(bgUrl)URL.revokeObjectURL(bgUrl);bgUrl=URL.createObjectURL(blob);bgInfo=rec;S.bgPre='';applyS();applyBg()}catch(e){toast(L('Không đọc được ảnh','Cannot read image'))}}
+
+/* ================= âm nhạc ================= */
+const aud=new Audio();aud.preload='metadata';aud.volume=S.vol;let songs=[],ci=-1,murl='';
+const fmtT=x=>isFinite(x)?Math.floor(x/60)+':'+String(Math.floor(x%60)).padStart(2,'0'):'0:00';
+async function loadSongs(){try{songs=((await dbx('songs','readonly',q=>q.getAll()))||[]).sort((a,b)=>a.ord-b.ord)}catch(e){songs=[]}musUpd()}
+async function addSongs(fl){let n=0;for(const f of fl){if(!/^audio\//.test(f.type)&&!/\.(mp3|m4a|wav|ogg|flac|aac|opus)$/i.test(f.name))continue;const o={id:Date.now()+n,name:f.name.replace(/\.[^.]+$/,''),blob:f,size:f.size,ord:Date.now()+n++};try{await dbx('songs','readwrite',q=>q.put(o))}catch(e){toast(L('Bộ nhớ đầy','Storage full'))}songs.push(o)}toast(L(`Đã thêm ${n}`,'Added '+n));musUpd()}
+function playIdx(i){if(!songs.length)return;ci=(i+songs.length)%songs.length;if(murl)URL.revokeObjectURL(murl);murl=URL.createObjectURL(songs[ci].blob);aud.src=murl;aud.play().catch(()=>{});musUpd()}
+function nextSong(d){if(!songs.length)return;if(S.shuf&&songs.length>1&&d>0){let n;do n=Math.floor(Math.random()*songs.length);while(n===ci);playIdx(n)}else playIdx((ci<0?0:ci)+d)}
+aud.onended=()=>{if(S.rep===2)playIdx(ci);else if(S.rep===1||ci<songs.length-1||S.shuf)nextSong(1);else musUpd()};aud.onplay=aud.onpause=()=>musUpd();
+aud.ontimeupdate=()=>{const r=$('mp-seek');if(r){r.max=aud.duration||0;r.value=aud.currentTime}const x=$('mp-t');if(x)x.textContent=fmtT(aud.currentTime)+' / '+fmtT(aud.duration)};
+function musUpd(){const m=$('mini');m.hidden=!(ci>=0);if(ci>=0){$('mini-t').textContent='♪ '+songs[ci].name;$('mini-pp').textContent=aud.paused?'▶':'⏸'}$('mus').style.color=!aud.paused&&ci>=0?'var(--blue)':'';
+const pp=$('mp-pp');if(pp)pp.textContent=aud.paused?'▶':'⏸';const sh=$('mp-sh');if(sh)sh.className=S.shuf?'':'alt';const rp=$('mp-rp');if(rp){rp.textContent=['🔁✕','🔁','🔂'][S.rep];rp.className=S.rep?'':'alt'}
+const nw=$('mp-now');if(nw)nw.textContent=ci>=0?songs[ci].name:L('Chưa phát bài nào','Nothing playing');
+const l=$('mp-list');if(l)l.innerHTML=songs.length?songs.map((q,i)=>`<div class="mrow${i===ci?' cur':''}"><span>${esc(q.name)}</span><small style="color:var(--sub)">${fsz(q.size)}</small><button class="alt sm" data-mp="${i}" type="button" style="min-width:0">▶</button><button class="dng sm" data-md="${q.id}" type="button" style="min-width:0">×</button></div>`).join(''):`<p class="empty">${esc(t(17))}</p>`}
+function openMus(){openSheet(`<b>♪ ${esc(t(10))}</b><div id="mp-now" style="margin:10px 0 4px;font-weight:600"></div><div style="display:flex;align-items:center;gap:8px"><input type="range" id="mp-seek" min="0" max="0" value="0" step="any" style="max-width:none"><span id="mp-t" style="font-size:.75rem;color:var(--sub);white-space:nowrap">0:00 / 0:00</span></div>
+<div class="mctl"><button id="mp-sh" type="button">🔀</button><button class="alt" id="mp-pv" type="button">⏮</button><button id="mp-pp" type="button">▶</button><button class="alt" id="mp-nx" type="button">⏭</button><button id="mp-rp" type="button">🔁</button></div>
+<div class="row" style="padding:4px 0;border:0"><span>🔈</span><input type="range" id="mp-vol" min="0" max="100" value="${Math.round(S.vol*100)}" style="max-width:none"></div>
+<div style="display:flex;gap:8px;margin:8px 0"><label class="btn alt" for="mp-add" style="flex:1">＋ ${esc(t(26))}</label><input type="file" id="mp-add" accept="audio/*" multiple><button class="dng" id="mp-clr" type="button">${esc(t(27))}</button></div><div class="grp" id="mp-list"></div>`);musUpd();aud.ontimeupdate()}
+document.addEventListener('input',e=>{const t0=e.target;if(t0.id==='mp-vol'){S.vol=t0.value/100;aud.volume=S.vol;applyS()}else if(t0.id==='mp-seek'&&aud.duration)aud.currentTime=+t0.value});
+
+/* ================= nút trên nav ================= */
+$('gear').onclick=openSettings;$('mus').onclick=openMus;$('mini-t').onclick=openMus;$('qz').onclick=newQuiz;
+$('cmp').onclick=()=>{if(!cmpPick.length){toast(L('Chọn 2 thuật ngữ trước','Pick 2 terms first'));return}showCmp()};
+$('cmpbox').addEventListener('click',e=>{const c=e.target.closest('[data-cmp]');if(c)toggleCmp(c.dataset.cmp)});
+
+/* ================= tiện ích ================= */
+function dl(b,n){const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=n;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000)}
+
+/* ================= boot ================= */
+matchMedia&&matchMedia('(prefers-color-scheme: dark)').addEventListener&&matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{if(S.theme==='auto')applyS()});
+(async()=>{
+  try{const f=await dbx('fav','readonly',q=>q.getAll());favIds=new Set((f||[]).map(x=>x.id))}catch(e){}
+  applyS();render();loadBg();loadSongs();
+})();
+</script>
+<script src="animepedia-patch.js"></script>
+</body>
+</html>
