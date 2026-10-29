@@ -1,1 +1,1 @@
-# Thu-t-ng-Anime
+THUẬT NGỮ TRONG ANIME
